@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:online_exam/features/auth/presentation/pages/sign_up_screen.dart';
 import '../../features/auth/presentation/pages/sign_in_screen.dart';
 import 'app_routes.dart';
 
@@ -8,8 +9,8 @@ class RouteGenerator {
       case AppRoutes.signInRoute:
         return MaterialPageRoute(builder: (_) => const SignInScreen());
 
-      // case AppRoutes.signUpRoute:
-      //   return MaterialPageRoute(builder: (_) => const SignUpScreen());
+      case AppRoutes.signUpRoute:
+        return MaterialPageRoute(builder: (_) => const SignUpScreen());
 
       // case AppRoutes.forgetPasswordRoute:
       //   return MaterialPageRoute(builder: (_) => const ForgetPasswordScreen());
