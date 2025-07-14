@@ -127,7 +127,7 @@ abstract class AppLocalizations {
   /// No description provided for @sign_up.
   ///
   /// In en, this message translates to:
-  /// **'Sign Up'**
+  /// **'Sign up'**
   String get sign_up;
 
   /// No description provided for @remember_me.
@@ -147,6 +147,78 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Don\'t have an account'**
   String get dont_have_an_account;
+
+  /// No description provided for @enter_your_user_name.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter your user name'**
+  String get enter_your_user_name;
+
+  /// No description provided for @user_name.
+  ///
+  /// In en, this message translates to:
+  /// **'User name'**
+  String get user_name;
+
+  /// No description provided for @enter_first_name.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter first name'**
+  String get enter_first_name;
+
+  /// No description provided for @first_name.
+  ///
+  /// In en, this message translates to:
+  /// **'First name'**
+  String get first_name;
+
+  /// No description provided for @enter_last_name.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter last name'**
+  String get enter_last_name;
+
+  /// No description provided for @last_name.
+  ///
+  /// In en, this message translates to:
+  /// **'Last name'**
+  String get last_name;
+
+  /// No description provided for @enter_password.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter password'**
+  String get enter_password;
+
+  /// No description provided for @confirm_password.
+  ///
+  /// In en, this message translates to:
+  /// **'Confirm password'**
+  String get confirm_password;
+
+  /// No description provided for @enter_phone_number.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter phone number'**
+  String get enter_phone_number;
+
+  /// No description provided for @phone_number.
+  ///
+  /// In en, this message translates to:
+  /// **'Phone number'**
+  String get phone_number;
+
+  /// No description provided for @sign_up_button.
+  ///
+  /// In en, this message translates to:
+  /// **'Signup'**
+  String get sign_up_button;
+
+  /// No description provided for @already_have_an_account.
+  ///
+  /// In en, this message translates to:
+  /// **'Already have an account?'**
+  String get already_have_an_account;
 }
 
 class _AppLocalizationsDelegate
