@@ -34,7 +34,9 @@ abstract class AppTheme {
           ),
         ),
       ),
+
       inputDecorationTheme: InputDecorationTheme(
+        floatingLabelBehavior: FloatingLabelBehavior.always,
         errorStyle: TextStyle(
           fontSize: 12.sp,
           fontWeight: AppFontWeight.regular,
@@ -91,7 +93,7 @@ abstract class AppTheme {
         bodyLarge: TextStyle(
           fontSize: 16.sp,
           fontWeight: AppFontWeight.medium,
-          color: AppColors.white,
+          color: AppColors.black,
         ),
         labelSmall: TextStyle(
           fontSize: 12.sp,
