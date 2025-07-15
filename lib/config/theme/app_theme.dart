@@ -21,6 +21,8 @@ abstract class AppTheme {
       ),
       elevatedButtonTheme: ElevatedButtonThemeData(
         style: ElevatedButton.styleFrom(
+          disabledBackgroundColor: AppColors.black[30],
+          disabledForegroundColor: AppColors.white,
           backgroundColor: AppColors.blue[0],
           foregroundColor: AppColors.white,
           shape: RoundedRectangleBorder(
