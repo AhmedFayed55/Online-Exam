@@ -20,6 +20,8 @@ import '../../features/auth/data/dataSouurces/auth_remote_data_srource.dart'
     as _i324;
 import '../../features/auth/data/repo/auth_repo_impl.dart' as _i984;
 import '../../features/auth/domian/repo/auth_repo.dart' as _i601;
+import '../../features/auth/domian/useCases/sign_up_usecase.dart' as _i804;
+import '../../features/auth/presentation/manger/cubit/auth_cubit.dart' as _i58;
 import 'module/dio_module.dart' as _i556;
 
 extension GetItInjectableX on _i174.GetIt {
@@ -30,6 +32,7 @@ extension GetItInjectableX on _i174.GetIt {
   }) {
     final gh = _i526.GetItHelper(this, environment, environmentFilter);
     final dioModule = _$DioModule();
+    gh.factory<_i58.AuthCubit>(() => _i58.AuthCubit());
     gh.lazySingleton<_i361.Dio>(() => dioModule.provideDio());
     gh.lazySingleton<_i528.PrettyDioLogger>(
       () => dioModule.providePrettyDioLogger(),
@@ -44,6 +47,9 @@ extension GetItInjectableX on _i174.GetIt {
       () => _i984.AuthRepoImpl(
         remoteDataSource: gh<_i324.AuthRemoteDataSource>(),
       ),
+    );
+    gh.factory<_i804.SignUpUseCase>(
+      () => _i804.SignUpUseCase(gh<_i601.AuthRepo>()),
     );
     return this;
   }
