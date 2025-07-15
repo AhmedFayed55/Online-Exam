@@ -70,4 +70,13 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get already_have_an_account => 'Already have an account?';
+
+  @override
+  String get ok => 'OK';
+
+  @override
+  String get acount_created_successfully => 'Account created successfully';
+
+  @override
+  String get success => 'Success';
 }

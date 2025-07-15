@@ -19,6 +19,8 @@
   "enter_phone_number": "Enter phone number",
   "phone_number": "Phone number",
   "sign_up_button" :  "Signup",
-  "already_have_an_account": "Already have an account?"
+  "already_have_an_account": "Already have an account?",
+  "ok" : "OK",
+  "acount_created_successfully": "Account created successfully",
+  "success" : "Success"
 }
-  
