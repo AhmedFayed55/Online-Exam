@@ -14,7 +14,7 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await ScreenUtil.ensureScreenSize();
   Bloc.observer = MyBlocObserver();
-  await configureDependencies();
+  // await configureDependencies();
   SharedPrefHelper.init();
   runApp(const OnlineExam());
 }
@@ -34,10 +34,11 @@ class OnlineExam extends StatelessWidget {
         supportedLocales: AppLocalizations.supportedLocales,
         debugShowCheckedModeBanner: false,
         onGenerateRoute: RouteGenerator.getRoute,
-        initialRoute: SharedPrefHelper.getData(key: AppConstants.userId) == null
-            ? AppRoutes.signInRoute
-            : AppRoutes.mainLayout,
-        theme: AppTheme.lightTheme,
+        initialRoute: AppRoutes.resetPasswordRoute,
+        // initialRoute: SharedPrefHelper.getData(key: AppConstants.userId) == null
+        //     ? AppRoutes.signInRoute
+        //     : AppRoutes.mainLayout,
+         theme: AppTheme.lightTheme,
       ),
     );
   }
