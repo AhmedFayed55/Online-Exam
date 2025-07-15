@@ -22,8 +22,8 @@ class _FormWidgetState extends State<FormWidget> {
   late TextEditingController confirmPasswordController;
   late TextEditingController phoneNumberController;
   late GlobalKey<FormState> formKey;
-  bool isvalidated = false;
-  bool isPasswrdHidden = true;
+  late bool isvalidated = false;
+  bool isPasswordHidden = true;
   bool isConfirmPasswordHidden = true;
 
   void initcontrollers() {
@@ -35,6 +35,7 @@ class _FormWidgetState extends State<FormWidget> {
     confirmPasswordController = TextEditingController();
     phoneNumberController = TextEditingController();
     formKey = GlobalKey<FormState>();
+    isvalidated = false;
   }
 
   void disposeControllers() {
@@ -123,7 +124,7 @@ class _FormWidgetState extends State<FormWidget> {
             ),
             controller1: passwordController,
             controller2: confirmPasswordController,
-            obscureText1: isPasswrdHidden,
+            obscureText1: isPasswordHidden,
             obscureText2: isConfirmPasswordHidden,
             hint1: AppLocalizations.of(context)!.enter_password,
             hint2: AppLocalizations.of(context)!.confirm_password,
@@ -131,11 +132,11 @@ class _FormWidgetState extends State<FormWidget> {
             label2: AppLocalizations.of(context)!.confirm_password,
             suffixIcon1: IconButton(
               icon: Icon(
-                isPasswrdHidden ? Icons.visibility_off : Icons.visibility,
+                isPasswordHidden ? Icons.visibility_off : Icons.visibility,
               ),
               onPressed: () {
                 setState(() {
-                  isPasswrdHidden = !isPasswrdHidden;
+                  isPasswordHidden = !isPasswordHidden;
                 });
               },
             ),
@@ -152,6 +153,7 @@ class _FormWidgetState extends State<FormWidget> {
               },
             ),
           ),
+
           verticalSpace(24),
           TextFormField(
             onChanged: updateButtonState,
@@ -167,13 +169,13 @@ class _FormWidgetState extends State<FormWidget> {
           verticalSpace(48),
           SignUpButtonBlockCosumer(
             isvalidated: isvalidated,
-            userNameController: userNameController,
+            confirmPasswordController: confirmPasswordController,
+            emailController: emailController,
             firstNameController: firstNameController,
             lastNameController: lastNameController,
-            emailController: emailController,
-            phoneNumberController: phoneNumberController,
             passwordController: passwordController,
-            confirmPasswordController: confirmPasswordController,
+            phoneNumberController: phoneNumberController,
+            userNameController: userNameController,
           ),
         ],
       ),

@@ -31,7 +31,7 @@ class OnlineExam extends StatelessWidget {
         supportedLocales: AppLocalizations.supportedLocales,
         debugShowCheckedModeBanner: false,
         onGenerateRoute: RouteGenerator.getRoute,
-        initialRoute: AppRoutes.signInRoute,
+        initialRoute: AppRoutes.signUpRoute,
         theme: AppTheme.lightTheme,
       ),
     );
