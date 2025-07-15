@@ -34,4 +34,22 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get dont_have_an_account => 'Don\'t have an account';
+
+  @override
+  String get no_internet_connection => 'No internet connection';
+
+  @override
+  String get loading => 'Loading...';
+
+  @override
+  String get error => 'Error';
+
+  @override
+  String get ok => 'Ok';
+
+  @override
+  String get login_successfully => 'Login successfully';
+
+  @override
+  String get success => 'Success';
 }

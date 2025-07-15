@@ -147,6 +147,42 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Don\'t have an account'**
   String get dont_have_an_account;
+
+  /// No description provided for @no_internet_connection.
+  ///
+  /// In en, this message translates to:
+  /// **'No internet connection'**
+  String get no_internet_connection;
+
+  /// No description provided for @loading.
+  ///
+  /// In en, this message translates to:
+  /// **'Loading...'**
+  String get loading;
+
+  /// No description provided for @error.
+  ///
+  /// In en, this message translates to:
+  /// **'Error'**
+  String get error;
+
+  /// No description provided for @ok.
+  ///
+  /// In en, this message translates to:
+  /// **'Ok'**
+  String get ok;
+
+  /// No description provided for @login_successfully.
+  ///
+  /// In en, this message translates to:
+  /// **'Login successfully'**
+  String get login_successfully;
+
+  /// No description provided for @success.
+  ///
+  /// In en, this message translates to:
+  /// **'Success'**
+  String get success;
 }
 
 class _AppLocalizationsDelegate
