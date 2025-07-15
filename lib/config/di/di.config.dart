@@ -32,12 +32,22 @@ extension GetItInjectableX on _i174.GetIt {
   }) {
     final gh = _i526.GetItHelper(this, environment, environmentFilter);
     final dioModule = _$DioModule();
-    gh.lazySingleton<_i361.Dio>(() => dioModule.provideDio());
+    final registerModule = _$RegisterModule();
     gh.lazySingleton<_i528.PrettyDioLogger>(
       () => dioModule.providePrettyDioLogger(),
     );
+    gh.lazySingleton<_i361.Dio>(
+      () => dioModule.provideDio(gh<_i528.PrettyDioLogger>()),
+    );
+    gh.lazySingleton<String>(
+      () => registerModule.baseUrl,
+      instanceName: 'BaseUrl',
+    );
     gh.factory<_i530.ApiService>(
-      () => _i530.ApiService(gh<_i361.Dio>(), baseUrl: gh<String>()),
+      () => _i530.ApiService(
+        gh<_i361.Dio>(),
+        baseUrl: gh<String>(instanceName: 'BaseUrl'),
+      ),
     );
     gh.factory<_i324.AuthRemoteDataSource>(
       () => _i336.AuthRemoteDataSourceImpl(apiService: gh<_i530.ApiService>()),
@@ -56,3 +66,5 @@ extension GetItInjectableX on _i174.GetIt {
 }
 
 class _$DioModule extends _i556.DioModule {}
+
+class _$RegisterModule extends _i556.RegisterModule {}

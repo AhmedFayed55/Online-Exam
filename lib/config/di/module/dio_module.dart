@@ -1,18 +1,15 @@
 import 'package:dio/dio.dart';
-
 import 'package:injectable/injectable.dart';
-import 'package:online_exam/config/di/di.dart';
 import 'package:online_exam/core/constants/api_endpoints.dart';
 import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 
 @module
 abstract class DioModule {
   @lazySingleton
-  Dio provideDio() {
+  Dio provideDio(PrettyDioLogger logger) {
     Dio dio = Dio();
-    dio.options.baseUrl = ApiConstants.baseUrl;
     dio.options.headers = {'Content-Type': 'application/json'};
-    dio.interceptors.add(getIt.get<PrettyDioLogger>());
+    dio.interceptors.add(logger);
     return dio;
   }
 
@@ -27,4 +24,11 @@ abstract class DioModule {
       compact: true,
     );
   }
+}
+
+@module
+abstract class RegisterModule {
+  @lazySingleton
+  @Named('BaseUrl')
+  String get baseUrl => ApiConstants.baseUrl;
 }

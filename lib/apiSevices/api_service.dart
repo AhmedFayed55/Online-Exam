@@ -9,7 +9,8 @@ part 'api_service.g.dart';
 @RestApi()
 abstract class ApiService {
   @factoryMethod
-  factory ApiService(Dio dio, {String? baseUrl}) = _ApiService;
+  factory ApiService(Dio dio, {@Named('BaseUrl') String? baseUrl}) =
+      _ApiService;
 
   @POST('auth/signup')
   Future<UserModelDto> signUp(@Body() RegisterInputModel registerInputModel);
