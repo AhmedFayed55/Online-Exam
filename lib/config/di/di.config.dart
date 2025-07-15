@@ -32,7 +32,6 @@ extension GetItInjectableX on _i174.GetIt {
   }) {
     final gh = _i526.GetItHelper(this, environment, environmentFilter);
     final dioModule = _$DioModule();
-    gh.factory<_i58.AuthCubit>(() => _i58.AuthCubit());
     gh.lazySingleton<_i361.Dio>(() => dioModule.provideDio());
     gh.lazySingleton<_i528.PrettyDioLogger>(
       () => dioModule.providePrettyDioLogger(),
@@ -51,6 +50,7 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i804.SignUpUseCase>(
       () => _i804.SignUpUseCase(gh<_i601.AuthRepo>()),
     );
+    gh.factory<_i58.AuthCubit>(() => _i58.AuthCubit(gh<_i804.SignUpUseCase>()));
     return this;
   }
 }
