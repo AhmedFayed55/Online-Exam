@@ -32,30 +32,16 @@ extension GetItInjectableX on _i174.GetIt {
   }) {
     final gh = _i526.GetItHelper(this, environment, environmentFilter);
     final dioModule = _$DioModule();
-    final registerModule = _$RegisterModule();
+    gh.lazySingleton<_i361.Dio>(() => dioModule.provideDio());
     gh.lazySingleton<_i528.PrettyDioLogger>(
       () => dioModule.providePrettyDioLogger(),
     );
-    gh.lazySingleton<_i361.Dio>(
-      () => dioModule.provideDio(gh<_i528.PrettyDioLogger>()),
-    );
-    gh.lazySingleton<String>(
-      () => registerModule.baseUrl,
-      instanceName: 'BaseUrl',
-    );
-    gh.factory<_i530.ApiService>(
-      () => _i530.ApiService(
-        gh<_i361.Dio>(),
-        baseUrl: gh<String>(instanceName: 'BaseUrl'),
-      ),
-    );
+    gh.factory<_i530.ApiService>(() => _i530.ApiService(gh<_i361.Dio>()));
     gh.factory<_i324.AuthRemoteDataSource>(
-      () => _i336.AuthRemoteDataSourceImpl(apiService: gh<_i530.ApiService>()),
+      () => _i336.AuthRemoteDataSourceImpl(gh<_i530.ApiService>()),
     );
     gh.factory<_i601.AuthRepo>(
-      () => _i984.AuthRepoImpl(
-        remoteDataSource: gh<_i324.AuthRemoteDataSource>(),
-      ),
+      () => _i984.AuthRepoImpl(gh<_i324.AuthRemoteDataSource>()),
     );
     gh.factory<_i804.SignUpUseCase>(
       () => _i804.SignUpUseCase(gh<_i601.AuthRepo>()),
@@ -66,5 +52,3 @@ extension GetItInjectableX on _i174.GetIt {
 }
 
 class _$DioModule extends _i556.DioModule {}
-
-class _$RegisterModule extends _i556.RegisterModule {}

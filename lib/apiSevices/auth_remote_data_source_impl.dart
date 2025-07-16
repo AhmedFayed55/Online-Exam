@@ -6,12 +6,12 @@ import 'package:online_exam/features/auth/data/models/userModel/user_model.dart'
 
 @Injectable(as: AuthRemoteDataSource)
 class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
-  final ApiService apiService;
-  AuthRemoteDataSourceImpl({required this.apiService});
+  final ApiService _apiService;
+  AuthRemoteDataSourceImpl(this._apiService);
 
   @override
   Future<UserModelDto> signUp(RegisterInputModel registerInputModel) async {
-    UserModelDto userModelDto = await apiService.signUp(registerInputModel);
+    UserModelDto userModelDto = await _apiService.signUp(registerInputModel);
     return userModelDto;
   }
 }

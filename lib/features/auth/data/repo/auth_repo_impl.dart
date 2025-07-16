@@ -11,20 +11,20 @@ import 'package:online_exam/features/auth/domian/repo/auth_repo.dart';
 
 @Injectable(as: AuthRepo)
 class AuthRepoImpl implements AuthRepo {
-  final AuthRemoteDataSource remoteDataSource;
-  AuthRepoImpl({required this.remoteDataSource});
+  final AuthRemoteDataSource _remoteDataSource;
+  AuthRepoImpl(this._remoteDataSource);
 
   @override
   Future<Either<Failure, UserEntity>> signUp(
     RegisterInputModel registerInputModel,
   ) async {
     try {
-      UserModelDto result = await remoteDataSource.signUp(registerInputModel);
+      UserModelDto result = await _remoteDataSource.signUp(registerInputModel);
       return right(result.user.toEntity());
     } on DioException catch (e) {
       return left(ServerFailure.fromDioError(dioException: e));
     } catch (e) {
-      return left(ServerFailure(errorMessage: 'Unexpected error occurred.'));
+      return left(ServerFailure(errorMessage: e.toString()));
     }
   }
 }

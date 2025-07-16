@@ -7,9 +7,9 @@ import 'package:online_exam/features/auth/domian/repo/auth_repo.dart';
 
 @injectable
 class SignUpUseCase {
-  final AuthRepo authRepo;
-  SignUpUseCase(this.authRepo);
+  final AuthRepo _authRepo;
+  SignUpUseCase(this._authRepo);
   Future<Either<Failure, UserEntity>> call(
     RegisterInputModel registerInputModel,
-  ) async => await authRepo.signUp(registerInputModel);
+  ) async => await _authRepo.signUp(registerInputModel);
 }
