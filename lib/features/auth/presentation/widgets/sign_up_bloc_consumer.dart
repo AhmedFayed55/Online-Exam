@@ -6,7 +6,8 @@ import 'package:online_exam/config/routing/routing_extensions.dart';
 import 'package:online_exam/core/helpers/dialogue_utils.dart';
 import 'package:online_exam/core/l10n/translations/app_localizations.dart';
 import 'package:online_exam/features/auth/data/models/userInputModels/register_input_model.dart';
-import 'package:online_exam/features/auth/presentation/manger/cubit/auth_cubit.dart';
+import 'package:online_exam/features/auth/presentation/manager/auth_cubit.dart';
+import 'package:online_exam/features/auth/presentation/manager/auth_states.dart';
 
 class SignUpButtonBlockCosumer extends StatelessWidget {
   const SignUpButtonBlockCosumer({
@@ -32,7 +33,7 @@ class SignUpButtonBlockCosumer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocConsumer<AuthCubit, AuthState>(
+    return BlocConsumer<AuthCubit, AuthStates>(
       listener: (context, state) {
         if (state is AuthError) {
           DialogueUtils.showMessage(

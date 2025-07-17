@@ -1,6 +1,3 @@
-import 'package:json_annotation/json_annotation.dart';
-
-@JsonSerializable()
 class RegisterInputModel {
   final String userName;
   final String firstName;
@@ -18,14 +15,4 @@ class RegisterInputModel {
     required this.rePassword,
     required this.phoneNumber,
   });
-
-  Map<String, dynamic> toJson() => {
-    'username': userName,
-    'firstName': firstName,
-    'lastName': lastName,
-    'email': email,
-    'phone': phoneNumber,
-    'password': password,
-    'rePassword': rePassword,
-  };
 }

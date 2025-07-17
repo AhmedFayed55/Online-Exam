@@ -1,4 +1,5 @@
 import 'package:json_annotation/json_annotation.dart';
+import 'package:online_exam/features/auth/domain/entities/login/user_entity.dart';
 import 'package:online_exam/features/auth/domian/Entity/user_entity.dart';
 part 'user.g.dart';
 
@@ -14,7 +15,7 @@ class UserInfoDto {
   String phone;
   String role;
   bool isVerified;
-  DateTime createdAt;
+  String createdAt;
 
   UserInfoDto({
     required this.userName,
@@ -33,7 +34,7 @@ class UserInfoDto {
   Map<String, dynamic> toJson() => _$UserInfoDtoToJson(this);
 
   UserEntity toEntity() => UserEntity(
-    userName: userName,
+    username: userName,
     firstName: firstName,
     lastName: lastName,
     email: email,
