@@ -1,3 +1,7 @@
+import 'package:json_annotation/json_annotation.dart';
+part 'register_input_model.g.dart';
+
+@JsonSerializable()
 class RegisterInputModel {
   final String userName;
   final String firstName;
@@ -15,4 +19,5 @@ class RegisterInputModel {
     required this.rePassword,
     required this.phoneNumber,
   });
+  Map<String, dynamic> toJson() => _$RegisterInputModelToJson(this);
 }
