@@ -22,5 +22,14 @@
   "already_have_an_account": "Already have an account?",
   "ok" : "OK",
   "acount_created_successfully": "Account created successfully",
-  "success" : "Success"
+  "success" : "Success",
+  "no_internet_connection": "No internet connection",
+  "loading": "Loading...",
+  "error": "Error",
+  "login_successfully": "Login successfully"
 }
+
+ 
+  
+
+

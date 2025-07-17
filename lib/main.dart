@@ -1,18 +1,21 @@
 import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:online_exam/config/di/di.dart';
+import 'package:online_exam/core/helpers/shared_pref.dart';
+import 'package:online_exam/core/utils/app_constants.dart';
 import 'config/routing/app_routes.dart';
 import 'config/routing/route_generator.dart';
 import 'config/theme/app_theme.dart';
+import 'core/di/di.dart';
 import 'core/helpers/bloc_observer.dart';
 import 'core/l10n/translations/app_localizations.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await ScreenUtil.ensureScreenSize();
-  await configureDependencies();
   Bloc.observer = MyBlocObserver();
+  await configureDependencies();
+  SharedPrefHelper.init();
   runApp(const OnlineExam());
 }
 
@@ -31,7 +34,9 @@ class OnlineExam extends StatelessWidget {
         supportedLocales: AppLocalizations.supportedLocales,
         debugShowCheckedModeBanner: false,
         onGenerateRoute: RouteGenerator.getRoute,
-        initialRoute: AppRoutes.signUpRoute,
+        initialRoute: SharedPrefHelper.getData(key: AppConstants.userId) == null
+            ? AppRoutes.signInRoute
+            : AppRoutes.mainLayout,
         theme: AppTheme.lightTheme,
       ),
     );

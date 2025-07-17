@@ -117,6 +117,11 @@ abstract class AppTheme {
           fontWeight: AppFontWeight.medium,
           color: AppColors.black,
         ),
+          titleLarge: TextStyle(
+              fontSize: 16.sp,
+              color: AppColors.black,
+              fontWeight: AppFontWeight.regular
+          )
       ),
     );
   }
@@ -132,6 +137,7 @@ abstract class AppTheme {
       onError: AppColors.white,
       surface: AppColors.white,
       onSurface: AppColors.blue,
+        shadow: AppColors.black
     ),
   );
 }
