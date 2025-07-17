@@ -15,7 +15,7 @@ void main() async {
   await ScreenUtil.ensureScreenSize();
   Bloc.observer = MyBlocObserver();
   await configureDependencies();
-  SharedPrefHelper.init();
+  await SharedPrefHelper.init();
   runApp(const OnlineExam());
 }
 

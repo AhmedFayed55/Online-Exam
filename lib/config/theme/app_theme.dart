@@ -21,6 +21,8 @@ abstract class AppTheme {
       ),
       elevatedButtonTheme: ElevatedButtonThemeData(
         style: ElevatedButton.styleFrom(
+          disabledBackgroundColor: AppColors.black[30],
+          disabledForegroundColor: AppColors.white,
           backgroundColor: AppColors.blue[0],
           foregroundColor: AppColors.white,
           shape: RoundedRectangleBorder(
@@ -34,7 +36,9 @@ abstract class AppTheme {
           ),
         ),
       ),
+
       inputDecorationTheme: InputDecorationTheme(
+        floatingLabelBehavior: FloatingLabelBehavior.always,
         errorStyle: TextStyle(
           fontSize: 12.sp,
           fontWeight: AppFontWeight.regular,
@@ -91,7 +95,7 @@ abstract class AppTheme {
         bodyLarge: TextStyle(
           fontSize: 16.sp,
           fontWeight: AppFontWeight.medium,
-          color: AppColors.white,
+          color: AppColors.black,
         ),
         labelSmall: TextStyle(
           fontSize: 12.sp,

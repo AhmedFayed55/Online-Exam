@@ -18,3 +18,16 @@ class LoginErrorState extends AuthStates {
 
   LoginErrorState(this.error);
 }
+
+class AuthLoading extends AuthStates {}
+
+class AuthError extends AuthStates {
+  final String message;
+  final String code;
+  AuthError({required this.message, required this.code});
+}
+
+class AuthSuccess extends AuthStates {
+  final UserEntity userEntity;
+  AuthSuccess({required this.userEntity});
+}
