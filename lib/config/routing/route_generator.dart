@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:online_exam/features/auth/presentation/manager/signUp/sign_up_cubit.dart';
 import 'package:online_exam/features/auth/presentation/pages/sign_up_screen.dart';
 import 'package:online_exam/features/auth/presentation/manager/auth_cubit.dart';
 import 'package:online_exam/features/main_layout/main_layout.dart';
@@ -21,7 +22,7 @@ class RouteGenerator {
       case AppRoutes.signUpRoute:
         return MaterialPageRoute(
           builder: (_) => BlocProvider(
-            create: (context) => getIt.get<AuthCubit>(),
+            create: (context) => getIt.get<SignUpCubit>(),
             child: const SignUpScreen(),
           ),
         );

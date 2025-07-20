@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:online_exam/core/enums/auth_enum.dart';
 import 'package:online_exam/core/functions/auth_validator.dart';
 import 'package:online_exam/core/helpers/spacing.dart';
 import 'package:online_exam/core/l10n/translations/app_localizations.dart';
+import 'package:online_exam/features/auth/presentation/widgets/password_row_fields.dart';
 import 'package:online_exam/features/auth/presentation/widgets/row_text_field_widget.dart';
 import 'package:online_exam/features/auth/presentation/widgets/sign_up_bloc_consumer.dart';
 
 class FormWidget extends StatefulWidget {
   const FormWidget({super.key});
-
   @override
   State<FormWidget> createState() => _FormWidgetState();
 }
@@ -22,7 +23,7 @@ class _FormWidgetState extends State<FormWidget> {
   late TextEditingController confirmPasswordController;
   late TextEditingController phoneNumberController;
   late GlobalKey<FormState> formKey;
-  late bool isvalidated = false;
+  bool isvalidated = false;
   bool isPasswordHidden = true;
   bool isConfirmPasswordHidden = true;
 
@@ -35,7 +36,6 @@ class _FormWidgetState extends State<FormWidget> {
     confirmPasswordController = TextEditingController();
     phoneNumberController = TextEditingController();
     formKey = GlobalKey<FormState>();
-    isvalidated = false;
   }
 
   void disposeControllers() {
@@ -46,6 +46,7 @@ class _FormWidgetState extends State<FormWidget> {
     passwordController.dispose();
     confirmPasswordController.dispose();
     phoneNumberController.dispose();
+    formKey.currentState?.dispose();
   }
 
   void updateButtonState(String _) {
@@ -84,7 +85,7 @@ class _FormWidgetState extends State<FormWidget> {
               labelText: AppLocalizations.of(context)!.user_name,
             ),
           ),
-          verticalSpace(24),
+          verticalSpace(24.h),
           RowTextField(
             onChanged1: updateButtonState,
             onChanged2: updateButtonState,
@@ -94,12 +95,8 @@ class _FormWidgetState extends State<FormWidget> {
                 authValidator(value: value!, filedType: FiledType.lastName),
             controller1: firstNameController,
             controller2: lastNameController,
-            hint1: AppLocalizations.of(context)!.enter_first_name,
-            hint2: AppLocalizations.of(context)!.enter_last_name,
-            label1: AppLocalizations.of(context)!.first_name,
-            label2: AppLocalizations.of(context)!.last_name,
           ),
-          verticalSpace(24),
+          verticalSpace(24.h),
           TextFormField(
             onChanged: updateButtonState,
             validator: (value) =>
@@ -110,51 +107,21 @@ class _FormWidgetState extends State<FormWidget> {
               labelText: AppLocalizations.of(context)!.email,
             ),
           ),
-
-          verticalSpace(24),
-          RowTextField(
-            onChanged1: updateButtonState,
-            onChanged2: updateButtonState,
-            validator1: (value) =>
+          verticalSpace(24.h),
+          PasswordRowFields(
+            onPasswordChanged: updateButtonState,
+            onConfirmPasswordChanged: updateButtonState,
+            passwordController: passwordController,
+            confirmPasswordController: confirmPasswordController,
+            passwordValidator: (value) =>
                 authValidator(value: value!, filedType: FiledType.password),
-            validator2: (value) => authValidator(
+            confirmPasswordValidator: (value) => authValidator(
               value: value!,
               filedType: FiledType.confrimPassword,
               confrimPassword: passwordController.text,
             ),
-            controller1: passwordController,
-            controller2: confirmPasswordController,
-            obscureText1: isPasswordHidden,
-            obscureText2: isConfirmPasswordHidden,
-            hint1: AppLocalizations.of(context)!.enter_password,
-            hint2: AppLocalizations.of(context)!.confirm_password,
-            label1: AppLocalizations.of(context)!.password,
-            label2: AppLocalizations.of(context)!.confirm_password,
-            suffixIcon1: IconButton(
-              icon: Icon(
-                isPasswordHidden ? Icons.visibility_off : Icons.visibility,
-              ),
-              onPressed: () {
-                setState(() {
-                  isPasswordHidden = !isPasswordHidden;
-                });
-              },
-            ),
-            suffixIcon2: IconButton(
-              icon: Icon(
-                isConfirmPasswordHidden
-                    ? Icons.visibility_off
-                    : Icons.visibility,
-              ),
-              onPressed: () {
-                setState(() {
-                  isConfirmPasswordHidden = !isConfirmPasswordHidden;
-                });
-              },
-            ),
           ),
-
-          verticalSpace(24),
+          verticalSpace(24.h),
           TextFormField(
             onChanged: updateButtonState,
             validator: (value) =>
@@ -166,7 +133,7 @@ class _FormWidgetState extends State<FormWidget> {
               labelText: AppLocalizations.of(context)!.phone_number,
             ),
           ),
-          verticalSpace(48),
+          verticalSpace(48.h),
           SignUpButtonBlockCosumer(
             isvalidated: isvalidated,
             confirmPasswordController: confirmPasswordController,
