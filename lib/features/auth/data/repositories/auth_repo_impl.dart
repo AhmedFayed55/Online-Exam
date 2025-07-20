@@ -1,6 +1,7 @@
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 import 'package:injectable/injectable.dart';
+import 'package:online_exam/core/errors/api_results.dart';
 import 'package:online_exam/core/errors/failure.dart';
 import 'package:online_exam/core/errors/failures.dart';
 import 'package:online_exam/features/auth/data/data_sources/auth_remote_ds.dart';
@@ -26,16 +27,20 @@ class AuthRepositoryImpl implements AuthRepository {
   }
 
   @override
-  Future<Either<Failure, UserEntity>> signUp(
+  Future<Apiresult<UserEntity>> signUp(
     RegisterInputModel registerInputModel,
   ) async {
     try {
       UserModelDto result = await dataSource.signUp(registerInputModel);
-      return right(result.user.toEntity());
+      return ApiSuccessResult<UserEntity>(data: result.user.toEntity());
     } on DioException catch (e) {
-      return left(ServerFailure.fromDioError(dioException: e));
+      return ApiErrorResult<UserEntity>(
+        failure: ServerFailure.fromDioError(dioException: e),
+      );
     } catch (e) {
-      return left(ServerFailure(errorMessage: e.toString()));
+      return ApiErrorResult<UserEntity>(
+        failure: Failure(errorMessage: e.toString()),
+      );
     }
   }
 }

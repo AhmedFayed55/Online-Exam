@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
+import 'package:online_exam/core/errors/api_results.dart';
 import 'package:online_exam/features/auth/data/models/login/login_request.dart';
 import 'package:online_exam/features/auth/data/models/userInputModels/register_input_model.dart';
+import 'package:online_exam/features/auth/domain/entities/login/user_entity.dart';
 import 'package:online_exam/features/auth/domain/use_cases/login_use_case.dart';
 import 'package:online_exam/features/auth/domain/use_cases/sign_up_usecase.dart';
 import 'package:online_exam/features/auth/presentation/manager/auth_states.dart';
@@ -49,10 +51,17 @@ class AuthCubit extends Cubit<AuthStates> {
   void signUp(RegisterInputModel registerInputModel) async {
     emit(AuthLoading());
     final result = await signUpUseCase.call(registerInputModel);
-    result.fold(
-      (failure) =>
-          emit(AuthError(message: failure.errorMessage, code: failure.code)),
-      (userEntity) => emit(AuthSuccess(userEntity: userEntity)),
-    );
+    switch (result) {
+      case ApiSuccessResult<UserEntity>():
+        emit(AuthSuccess(userEntity: result.data));
+
+      case ApiErrorResult<UserEntity>():
+        emit(
+          AuthError(
+            message: result.failure.errorMessage,
+            code: result.failure.code,
+          ),
+        );
+    }
   }
 }
