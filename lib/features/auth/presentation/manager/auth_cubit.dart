@@ -8,7 +8,6 @@ import 'package:online_exam/features/auth/presentation/manager/auth_states.dart'
 @injectable
 class AuthCubit extends Cubit<AuthStates> {
   AuthCubit({required this.loginUseCase}) : super(AuthInitialState());
-
   LoginUseCase loginUseCase;
 
   GlobalKey<FormState> formKey = GlobalKey<FormState>();

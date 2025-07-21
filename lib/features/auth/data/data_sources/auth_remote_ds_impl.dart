@@ -1,6 +1,8 @@
 import 'package:dartz/dartz.dart';
 import 'package:injectable/injectable.dart';
 import 'package:internet_connection_checker/internet_connection_checker.dart';
+import 'package:online_exam/features/auth/data/models/userInputModels/register_input_model.dart';
+import 'package:online_exam/features/auth/data/models/userModel/user_model.dart';
 import '../../../../core/errors/failures.dart';
 import '../../../../core/network/api_services.dart';
 import '../../../../core/utils/app_constants.dart';
@@ -36,5 +38,11 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
     } catch (e) {
       return Left(ServerError(errorMessage: e.toString()));
     }
+  }
+
+  @override
+  Future<UserModelDto> signUp(RegisterInputModel registerInputModel) async {
+    UserModelDto userModelDto = await apiServices.signUp(registerInputModel);
+    return userModelDto;
   }
 }

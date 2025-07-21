@@ -4,14 +4,32 @@
   "password": "Password",
   "enter_your_email": "Enter your email",
   "enter_your_password": "Enter your password",
-  "sign_up": "Sign Up",
+  "sign_up": "Sign up",
   "remember_me": "Remember me",
   "forget_password": "Forget password",
   "dont_have_an_account": "Don't have an account",
+  "enter_your_user_name": "Enter your user name",
+  "user_name": "User name",
+  "enter_first_name": "Enter first name",
+  "first_name": "First name",
+  "enter_last_name": "Enter last name",
+  "last_name": "Last name",
+  "enter_password": "Enter password",
+  "confirm_password": "Confirm password",
+  "enter_phone_number": "Enter phone number",
+  "phone_number": "Phone number",
+  "sign_up_button" :  "Signup",
+  "already_have_an_account": "Already have an account?",
+  "ok" : "OK",
+  "acount_created_successfully": "Account created successfully",
+  "success" : "Success",
   "no_internet_connection": "No internet connection",
   "loading": "Loading...",
   "error": "Error",
-  "ok": "Ok",
-  "login_successfully": "Login successfully",
-  "success": "Success"
+  "login_successfully": "Login successfully"
 }
+
+ 
+  
+
+
