@@ -61,3 +61,4 @@ lib/config/di/di.config.dart
 .metadata
 .metadata
 .metadata
+pubspec.lock

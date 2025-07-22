@@ -26,7 +26,13 @@
   "no_internet_connection": "No internet connection",
   "loading": "Loading...",
   "error": "Error",
-  "login_successfully": "Login successfully"
+  "login_successfully": "Login successfully",
+  "survey" : "Survey",
+  "search" : "Search",
+  "browse_by_subject" : "Browse by subject",
+  "explore" : "Explore",
+  "result" : "Result",
+  "profile" : "Profile"
 }
 
  

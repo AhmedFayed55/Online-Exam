@@ -1,24 +1,34 @@
 import 'package:flutter/material.dart';
-import 'package:online_exam/config/routing/app_routes.dart';
-import 'package:online_exam/config/routing/routing_extensions.dart';
-import 'package:online_exam/core/helpers/shared_pref.dart';
-import 'package:online_exam/core/utils/app_constants.dart';
+import 'package:online_exam/features/main_layout/widgets/button_nav_bar.dart';
+import 'package:online_exam/features/main_layout/explore/presentation/pages/explore_screen.dart';
 
-class MainLayout extends StatelessWidget {
+class MainLayout extends StatefulWidget {
   const MainLayout({super.key});
 
   @override
+  State<MainLayout> createState() => _MainLayoutState();
+}
+
+class _MainLayoutState extends State<MainLayout> {
+  int currentIndex = 0;
+  @override
   Widget build(BuildContext context) {
-    return Center(
-      child: ElevatedButton(
-        onPressed: () {
-          SharedPrefHelper.removeData(key: AppConstants.userId);
-          context.pushNamedAndRemoveUntil(
-            AppRoutes.signInRoute,
-            predicate: (route) => true,
-          );
+    return Scaffold(
+      bottomNavigationBar: CustomButtonNavBar(
+        currentIndex: currentIndex,
+        onTap: (index) {
+          setState(() {
+            currentIndex = index;
+          });
         },
-        child: const Text("Delete Account"),
+      ),
+      body: IndexedStack(
+        index: currentIndex,
+        children: const [
+          ExploreScreen(),
+          Center(child: Text('result')),
+          Center(child: Text('profile')),
+        ],
       ),
     );
   }
