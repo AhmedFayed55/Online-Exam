@@ -22,7 +22,7 @@ class AuthRepositoryImpl implements AuthRepository {
     var response = await dataSource.signIn(loginRequest);
     return response.fold(
       (error) => Left(error),
-      (response) => Right(response.user!.toEntity()),
+      (response) => Right(response.toEntity()),
     );
   }
 

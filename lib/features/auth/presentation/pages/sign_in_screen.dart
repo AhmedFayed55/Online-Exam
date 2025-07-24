@@ -5,6 +5,7 @@ import 'package:online_exam/config/routing/app_routes.dart';
 import 'package:online_exam/config/routing/routing_extensions.dart';
 import 'package:online_exam/core/helpers/shared_pref.dart';
 import 'package:online_exam/core/l10n/translations/app_localizations.dart';
+import 'package:online_exam/core/network/api_constants.dart';
 import 'package:online_exam/core/utils/app_constants.dart';
 import 'package:online_exam/features/auth/presentation/manager/auth_cubit.dart';
 import 'package:online_exam/features/auth/presentation/manager/auth_states.dart';
@@ -27,9 +28,7 @@ class _SignInScreenState extends State<SignInScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(AppLocalizations.of(context)!.login),
-      ),
+      appBar: AppBar(title: Text(AppLocalizations.of(context)!.login)),
       body: Padding(
         padding: REdgeInsets.all(16),
         child: BlocListener<AuthCubit, AuthStates>(
@@ -55,22 +54,27 @@ class _SignInScreenState extends State<SignInScreen> {
                 title: AppLocalizations.of(context)!.success,
                 posActionName: AppLocalizations.of(context)!.ok,
                 posAction: () {
-                  // todo : Save token for auto login  if remember me is enable
+                  SharedPrefHelper.saveData(
+                    key: ApiConstants.token,
+                    val: state.userEntity.token,
+                  );
+
                   if (isRemember) {
                     SharedPrefHelper.saveData(
-                        key: AppConstants.userId, val: state.userEntity.id);
+                      key: AppConstants.isRemember,
+                      val: isRemember,
+                    );
                   }
-                  //todo : navigate to home screen
                   context.pushNamedAndRemoveUntil(
-                      AppRoutes.mainLayout, predicate: (route) => true);
+                    AppRoutes.mainLayout,
+                    predicate: (route) => true,
+                  );
                 },
               );
             }
           },
           child: Form(
-            key: AuthCubit
-                .get(context)
-                .formKey,
+            key: AuthCubit.get(context).formKey,
             child: Column(
               children: [
                 const SignInFields(),

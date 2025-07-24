@@ -62,3 +62,14 @@ lib/config/di/di.config.dart
 .metadata
 .metadata
 pubspec.lock
+lib/core/network/api_services.g.dart
+lib/features/auth/data/models/login/login_request.g.dart
+lib/features/auth/data/models/login/login_response_dm.g.dart
+lib/features/auth/data/models/login/user_dm.g.dart
+lib/features/auth/data/models/userInputModels/register_input_model.g.dart
+lib/features/auth/data/models/userModel/user_model.g.dart
+lib/features/auth/data/models/userModel/user.g.dart
+lib/features/main_layout/explore/data/models/subjects_dto/metadata.g.dart
+lib/features/main_layout/explore/data/models/subjects_dto/subject.g.dart
+lib/features/main_layout/explore/data/models/subjects_dto/subjects_dto.g.dart
+pubspec.lock
