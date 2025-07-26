@@ -1,6 +1,7 @@
 import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:online_exam/core/functions/initial_route.dart';
 import 'package:online_exam/core/helpers/shared_pref.dart';
 import 'package:online_exam/core/utils/app_constants.dart';
 import 'config/routing/app_routes.dart';
@@ -34,9 +35,7 @@ class OnlineExam extends StatelessWidget {
         supportedLocales: AppLocalizations.supportedLocales,
         debugShowCheckedModeBanner: false,
         onGenerateRoute: RouteGenerator.getRoute,
-        initialRoute: SharedPrefHelper.getData(key: AppConstants.userId) == null
-            ? AppRoutes.signInRoute
-            : AppRoutes.mainLayout,
+        initialRoute: getInitialRoute(),
         theme: AppTheme.lightTheme,
       ),
     );

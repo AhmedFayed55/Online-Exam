@@ -1,5 +1,6 @@
 import 'package:json_annotation/json_annotation.dart';
 import 'package:online_exam/features/auth/data/models/login/user_dm.dart';
+import 'package:online_exam/features/auth/domain/entities/login/user_entity.dart';
 
 part 'login_response_dm.g.dart';
 
@@ -20,5 +21,20 @@ class LoginResponseDm {
 
   Map<String, dynamic> toJson() {
     return _$LoginResponseDmToJson(this);
+  }
+
+  UserEntity toEntity() {
+    return UserEntity(
+      token: token,
+      id: user?.id,
+      username: user?.username,
+      firstName: user?.firstName,
+      lastName: user?.lastName,
+      email: user?.email,
+      phone: user?.phone,
+      role: user?.role,
+      isVerified: user?.isVerified,
+      createdAt: user?.createdAt,
+    );
   }
 }

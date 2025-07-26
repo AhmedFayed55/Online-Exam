@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:online_exam/features/main_layout/main_layout.dart';
 import 'package:online_exam/features/auth/presentation/manager/signUp/sign_up_cubit.dart';
 import 'package:online_exam/features/auth/presentation/pages/sign_up_screen.dart';
 import 'package:online_exam/features/auth/presentation/manager/auth_cubit.dart';
-import 'package:online_exam/features/main_layout/main_layout.dart';
 import '../../core/di/di.dart';
 import '../../features/auth/presentation/pages/sign_in_screen.dart';
 import 'app_routes.dart';

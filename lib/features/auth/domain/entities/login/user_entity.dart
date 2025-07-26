@@ -1,5 +1,6 @@
 class UserEntity {
   UserEntity({
+    this.token,
     this.id,
     this.username,
     this.firstName,
@@ -10,7 +11,7 @@ class UserEntity {
     this.isVerified,
     this.createdAt,
   });
-
+  String? token;
   String? id;
   String? username;
   String? firstName;
