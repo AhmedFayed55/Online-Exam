@@ -91,4 +91,22 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get login_successfully => 'Login successfully';
+
+  @override
+  String get survey => 'Survey';
+
+  @override
+  String get search => 'Search';
+
+  @override
+  String get browse_by_subject => 'Browse by subject';
+
+  @override
+  String get explore => 'Explore';
+
+  @override
+  String get result => 'Result';
+
+  @override
+  String get profile => 'Profile';
 }

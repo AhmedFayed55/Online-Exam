@@ -261,6 +261,42 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Login successfully'**
   String get login_successfully;
+
+  /// No description provided for @survey.
+  ///
+  /// In en, this message translates to:
+  /// **'Survey'**
+  String get survey;
+
+  /// No description provided for @search.
+  ///
+  /// In en, this message translates to:
+  /// **'Search'**
+  String get search;
+
+  /// No description provided for @browse_by_subject.
+  ///
+  /// In en, this message translates to:
+  /// **'Browse by subject'**
+  String get browse_by_subject;
+
+  /// No description provided for @explore.
+  ///
+  /// In en, this message translates to:
+  /// **'Explore'**
+  String get explore;
+
+  /// No description provided for @result.
+  ///
+  /// In en, this message translates to:
+  /// **'Result'**
+  String get result;
+
+  /// No description provided for @profile.
+  ///
+  /// In en, this message translates to:
+  /// **'Profile'**
+  String get profile;
 }
 
 class _AppLocalizationsDelegate
