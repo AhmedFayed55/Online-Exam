@@ -24,6 +24,27 @@ import '../../features/auth/domain/use_cases/sign_up_usecase.dart' as _i960;
 import '../../features/auth/presentation/manager/auth_cubit.dart' as _i888;
 import '../../features/auth/presentation/manager/signUp/sign_up_cubit.dart'
     as _i920;
+import '../../features/Exam/data/datasources/exam_remote_data_source.dart'
+    as _i589;
+import '../../features/Exam/data/datasources/exam_remote_data_source_impl.dart'
+    as _i1018;
+import '../../features/Exam/data/repositories/exam_repo_impl.dart' as _i393;
+import '../../features/Exam/domain/repositories/exam_repo.dart' as _i713;
+import '../../features/Exam/domain/usecases/get_questions_use_case.dart'
+    as _i593;
+import '../../features/Exam/presentation/cubit/exam_cubit.dart' as _i776;
+import '../../features/main_layout/explore/data/datasources/remote_data_source.dart'
+    as _i572;
+import '../../features/main_layout/explore/data/datasources/remote_data_source_impl.dart'
+    as _i720;
+import '../../features/main_layout/explore/data/repositories/repo_impl.dart'
+    as _i960;
+import '../../features/main_layout/explore/domain/repositories/repo.dart'
+    as _i10;
+import '../../features/main_layout/explore/domain/usecases/get_subjects_use_case.dart'
+    as _i678;
+import '../../features/main_layout/explore/presentation/manger/cubit/explore_cubit.dart'
+    as _i1068;
 import '../network/api_services.dart' as _i804;
 import '../network/di.dart' as _i271;
 
@@ -43,14 +64,40 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i147.AuthRemoteDataSource>(
       () => _i570.AuthRemoteDataSourceImpl(gh<_i804.ApiServices>()),
     );
+    gh.factory<_i572.ExploreRemoteDataSource>(
+      () => _i720.ExploreRemoteDataSourceImpl(gh<_i804.ApiServices>()),
+    );
+    gh.factory<_i589.ExamRemoteDataSource>(
+      () => _i1018.ExamRemoteDataSourceImpl(gh<_i804.ApiServices>()),
+    );
+    gh.factory<_i10.ExploreRepository>(
+      () => _i960.ExploreRepositoryImpl(gh<_i572.ExploreRemoteDataSource>()),
+    );
+    gh.factory<_i713.ExamRepo>(
+      () => _i393.ExamRepoImpl(
+        examRemoteDataSource: gh<_i589.ExamRemoteDataSource>(),
+      ),
+    );
     gh.factory<_i723.AuthRepository>(
       () => _i662.AuthRepositoryImpl(gh<_i147.AuthRemoteDataSource>()),
+    );
+    gh.factory<_i593.GetQuestionsUseCase>(
+      () => _i593.GetQuestionsUseCase(gh<_i713.ExamRepo>()),
+    );
+    gh.factory<_i678.GetSubjectsUseCase>(
+      () => _i678.GetSubjectsUseCase(gh<_i10.ExploreRepository>()),
+    );
+    gh.factory<_i1068.ExploreCubit>(
+      () => _i1068.ExploreCubit(gh<_i678.GetSubjectsUseCase>()),
     );
     gh.factory<_i960.SignUpUseCase>(
       () => _i960.SignUpUseCase(gh<_i723.AuthRepository>()),
     );
     gh.factory<_i1038.LoginUseCase>(
       () => _i1038.LoginUseCase(gh<_i723.AuthRepository>()),
+    );
+    gh.factory<_i776.ExamCubit>(
+      () => _i776.ExamCubit(gh<_i593.GetQuestionsUseCase>()),
     );
     gh.factory<_i888.AuthCubit>(
       () => _i888.AuthCubit(loginUseCase: gh<_i1038.LoginUseCase>()),

@@ -73,3 +73,15 @@ lib/features/main_layout/explore/data/models/subjects_dto/metadata.g.dart
 lib/features/main_layout/explore/data/models/subjects_dto/subject.g.dart
 lib/features/main_layout/explore/data/models/subjects_dto/subjects_dto.g.dart
 pubspec.lock
+lib/core/l10n/translations/app_localizations_en.dart
+lib/core/l10n/translations/app_localizations.dart
+lib/features/Exam/data/models/questions/answer.g.dart
+lib/features/Exam/data/models/questions/exam.g.dart
+lib/features/Exam/data/models/questions/question.g.dart
+lib/features/Exam/data/models/questions/questions_dto.g.dart
+lib/core/di/di.config.dart
+
+lib/features/Exam/data/models/answer/answer_input_model/answer.g.dart
+lib/features/Exam/data/models/answer/answer_input_model/answer_input_model.g.dart
+lib/features/Exam/data/models/answer/answer_input_model.g.dart
+lib/features/Exam/data/models/answer/answer.g.dart

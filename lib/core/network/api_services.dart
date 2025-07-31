@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:injectable/injectable.dart';
+import 'package:online_exam/features/Exam/data/models/questions/questions_dto.dart';
 import 'package:online_exam/features/auth/data/models/login/login_response_dm.dart';
 import 'package:online_exam/features/auth/data/models/userInputModels/register_input_model.dart';
 import 'package:online_exam/features/auth/data/models/userModel/user_model.dart';
@@ -22,4 +23,9 @@ abstract class ApiServices {
   Future<UserModelDto> signUp(@Body() RegisterInputModel registerInputModel);
   @GET(ApiConstants.getSubjectsEndpoint)
   Future<SubjectsDto> getSubjects(@Header(ApiConstants.token) String token);
+  @GET(ApiConstants.getQuestionsEndpoint)
+  Future<QuestionsDto> getAllQuestionsOnExam(
+    @Header(ApiConstants.token) String token,
+    @Path(ApiConstants.examId) String examId,
+  );
 }
