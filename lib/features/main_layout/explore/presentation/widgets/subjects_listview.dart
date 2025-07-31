@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:online_exam/config/routing/app_routes.dart';
+import 'package:online_exam/config/routing/routing_extensions.dart';
 import 'package:online_exam/core/helpers/spacing.dart';
 import 'package:online_exam/features/main_layout/explore/domain/entities/subject_entity.dart';
 import 'package:online_exam/features/main_layout/explore/presentation/widgets/custom_subject_item_widget.dart';
@@ -14,7 +16,12 @@ class SubjectsListView extends StatelessWidget {
       itemCount: subjects.length,
       separatorBuilder: (context, index) => verticalSpace(16),
       itemBuilder: (context, index) =>
-          CustomSubjectItem(subjectEntity: subjects[index]),
+          GestureDetector(
+              onTap: () {
+                context.pushNamed(
+                    AppRoutes.subjectExamsScreen, arguments: subjects[index]);
+              },
+              child: CustomSubjectItem(subjectEntity: subjects[index])),
     );
   }
 }

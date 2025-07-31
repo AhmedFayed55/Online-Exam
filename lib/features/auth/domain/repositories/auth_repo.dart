@@ -7,5 +7,6 @@ import '../../data/models/login/login_request.dart';
 
 abstract class AuthRepository {
   Future<Either<Failures, UserEntity>> signIn(LoginRequest loginRequest);
-  Future<Apiresult<UserEntity>> signUp(RegisterInputModel registerInputModel);
+
+  Future<ApiResult<UserEntity>> signUp(RegisterInputModel registerInputModel);
 }

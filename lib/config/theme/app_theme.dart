@@ -121,6 +121,21 @@ abstract class AppTheme {
               fontSize: 16.sp,
               color: AppColors.black,
               fontWeight: AppFontWeight.regular
+          ),
+          displayMedium: TextStyle(
+              fontSize: 18.sp,
+              fontWeight: AppFontWeight.medium,
+              color: AppColors.black
+          ),
+          displaySmall: TextStyle(
+              fontSize: 13.sp,
+              fontWeight: AppFontWeight.regular,
+              color: AppColors.black
+          ),
+          headlineLarge: TextStyle(
+              color: AppColors.black,
+              fontWeight: AppFontWeight.semiBold,
+              fontSize: 20.sp
           )
       ),
     );

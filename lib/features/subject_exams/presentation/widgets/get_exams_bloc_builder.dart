@@ -1,0 +1,45 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:lottie/lottie.dart';
+import 'package:online_exam/config/routing/routing_extensions.dart';
+import 'package:online_exam/core/utils/app_images.dart';
+
+import '../../../../config/routing/app_routes.dart';
+import '../../../../core/helpers/spacing.dart';
+import '../manager/get_exams_cubit.dart';
+import '../manager/get_exams_state.dart';
+import 'exams_list_view_item.dart';
+
+class GetExamsBlocBuilder extends StatelessWidget {
+  const GetExamsBlocBuilder({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return BlocBuilder<GetExamsCubit, GetExamsState>(
+      builder: (context, state) {
+        if (state is GetExamsSuccessState) {
+          return ListView.separated(
+            itemBuilder: (context, index) => GestureDetector(
+              onTap: () {
+                context.pushNamed(
+                  AppRoutes.specificExamScreen,
+                  arguments: state.exams[index],
+                );
+              },
+              child: state.exams.isEmpty
+                  ? Center(child: Lottie.asset(AppImages.emptyLottie))
+                  : ExamsListViewItem(exam: state.exams[index]),
+            ),
+            separatorBuilder: (context, index) => verticalSpace(10.h),
+            itemCount: state.exams.length,
+          );
+        }
+        if (state is GetExamsErrorState) {
+          return Center(child: Text(state.errorMessage));
+        }
+        return const Center(child: CircularProgressIndicator());
+      },
+    );
+  }
+}

@@ -27,7 +27,7 @@ class AuthRepositoryImpl implements AuthRepository {
   }
 
   @override
-  Future<Apiresult<UserEntity>> signUp(
+  Future<ApiResult<UserEntity>> signUp(
     RegisterInputModel registerInputModel,
   ) async {
     try {

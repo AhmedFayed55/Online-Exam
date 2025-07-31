@@ -10,10 +10,10 @@ class ExploreRepositoryImpl implements ExploreRepository {
   ExploreRepositoryImpl(this._remoteDataSource);
 
   @override
-  Future<Apiresult<List<SubjectEntity>>> getSubjects({
+  Future<ApiResult<List<SubjectEntity>>> getSubjects({
     required String token,
   }) async {
-    Apiresult<List<SubjectEntity>> response = await _remoteDataSource
+    ApiResult<List<SubjectEntity>> response = await _remoteDataSource
         .getSubjects(token: token);
     return response;
   }

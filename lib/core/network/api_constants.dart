@@ -5,4 +5,5 @@ abstract class ApiConstants {
   static const String forgetPasswordEndpoint = "auth/signup";
   static const String getSubjectsEndpoint = "subjects";
   static const String token = "token";
+  static const String getAllSubjectsExamsOnSubjectEndpoint = "exams";
 }
