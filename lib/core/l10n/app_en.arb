@@ -32,10 +32,18 @@
   "browse_by_subject" : "Browse by subject",
   "explore" : "Explore",
   "result" : "Result",
-  "profile" : "Profile"
+  "profile" : "Profile",
+  "exam" : "Exam",
+  "question" : "Question",
+  "next" : "Next", 
+  "finish" : "Finish", 
+  "time_out" : "Time out !!",
+  "view_score" : "View Score",
+  "exam_score" : "Exam Score",
+  "your_score" : "Your Score",
+  "correct" : "Correct",
+  "incorrect" : "Incorrect",
+  "show_result" : "Show Result",
+  "start_again" : "Start Again",
+  "of_": "of"
 }
-
- 
-  
-
-

@@ -109,4 +109,43 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get profile => 'Profile';
+
+  @override
+  String get exam => 'Exam';
+
+  @override
+  String get question => 'Question';
+
+  @override
+  String get next => 'Next';
+
+  @override
+  String get finish => 'Finish';
+
+  @override
+  String get time_out => 'Time out !!';
+
+  @override
+  String get view_score => 'View Score';
+
+  @override
+  String get exam_score => 'Exam Score';
+
+  @override
+  String get your_score => 'Your Score';
+
+  @override
+  String get correct => 'Correct';
+
+  @override
+  String get incorrect => 'Incorrect';
+
+  @override
+  String get show_result => 'Show Result';
+
+  @override
+  String get start_again => 'Start Again';
+
+  @override
+  String get of_ => 'of';
 }
