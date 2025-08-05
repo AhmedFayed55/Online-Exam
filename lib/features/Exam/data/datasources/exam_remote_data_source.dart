@@ -6,11 +6,11 @@ import 'package:online_exam/features/Exam/domain/entities/score_entity.dart';
 
 @immutable
 abstract interface class ExamRemoteDataSource {
-  Future<Apiresult<List<QuestionEntity>>> getAllQuestionsOnExam({
+  Future<ApiResult<List<QuestionEntity>>> getAllQuestionsOnExam({
     required String token,
     required String examId,
   });
-  Future<Apiresult<ScoreEntity>> checkExamAnswers({
+  Future<ApiResult<ScoreEntity>> checkExamAnswers({
     required UserAnswerInputModel inputModel,
     required String token,
   });

@@ -8,7 +8,7 @@ class GetQuestionsUseCase {
   final ExamRepo repository;
   GetQuestionsUseCase(this.repository);
 
-  Future<Apiresult<List<QuestionEntity>>> invoke({
+  Future<ApiResult<List<QuestionEntity>>> invoke({
     required String token,
     required String examId,
   }) async {

@@ -11,17 +11,17 @@ class ExamRepoImpl implements ExamRepo {
   final ExamRemoteDataSource _examRemoteDataSource;
   ExamRepoImpl(this._examRemoteDataSource);
   @override
-  Future<Apiresult<List<QuestionEntity>>> getAllQuestionsOnExam({
+  Future<ApiResult<List<QuestionEntity>>> getAllQuestionsOnExam({
     required String token,
     required String examId,
   }) async {
-    Apiresult<List<QuestionEntity>> questions = await _examRemoteDataSource
+    ApiResult<List<QuestionEntity>> questions = await _examRemoteDataSource
         .getAllQuestionsOnExam(token: token, examId: examId);
     return questions;
   }
 
   @override
-  Future<Apiresult<ScoreEntity>> checkExamAnswers({
+  Future<ApiResult<ScoreEntity>> checkExamAnswers({
     required UserAnswerInputModel inputModel,
     required String token,
   }) {

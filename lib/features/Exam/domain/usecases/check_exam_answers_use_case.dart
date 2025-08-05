@@ -10,7 +10,7 @@ class CheckExamAnswersUseCase {
 
   CheckExamAnswersUseCase(this._repository);
 
-  Future<Apiresult<ScoreEntity>> invoke({
+  Future<ApiResult<ScoreEntity>> invoke({
     required UserAnswerInputModel inputModel,
     required String token,
   }) async {

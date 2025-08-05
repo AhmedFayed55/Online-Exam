@@ -15,7 +15,7 @@ class ExamRemoteDataSourceImpl implements ExamRemoteDataSource {
   const ExamRemoteDataSourceImpl(this._apiServices);
 
   @override
-  Future<Apiresult<List<QuestionEntity>>> getAllQuestionsOnExam({
+  Future<ApiResult<List<QuestionEntity>>> getAllQuestionsOnExam({
     required String token,
     required String examId,
   }) async {
@@ -42,7 +42,7 @@ class ExamRemoteDataSourceImpl implements ExamRemoteDataSource {
   }
 
   @override
-  Future<Apiresult<ScoreEntity>> checkExamAnswers({
+  Future<ApiResult<ScoreEntity>> checkExamAnswers({
     required UserAnswerInputModel inputModel,
     required String token,
   }) async {
