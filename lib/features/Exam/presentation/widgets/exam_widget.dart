@@ -5,14 +5,9 @@ import 'package:online_exam/features/Exam/domain/entities/question_entity.dart';
 import 'package:online_exam/features/Exam/presentation/widgets/exam_answer_radio_listtile_widget.dart';
 
 class ExamWidget extends StatelessWidget {
-  const ExamWidget({
-    super.key,
-    required this.questionEntity,
-    required this.questionsLength,
-  });
+  const ExamWidget({super.key, required this.questionEntity});
 
   final QuestionEntity questionEntity;
-  final int questionsLength;
 
   @override
   Widget build(BuildContext context) {
@@ -34,7 +29,6 @@ class ExamWidget extends StatelessWidget {
           itemBuilder: (context, index) {
             return ExamAnswerRadioListTileWidget(
               answers: questionEntity.answers![index],
-              questionEntity: questionEntity,
             );
           },
         ),

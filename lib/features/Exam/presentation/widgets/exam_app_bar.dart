@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:online_exam/core/l10n/translations/app_localizations.dart';
 import 'package:online_exam/features/Exam/presentation/widgets/custom_timer_widget.dart';
 import 'package:online_exam/features/auth/presentation/widgets/custom_app_bar.dart';
 
@@ -7,11 +8,11 @@ class ExamAppBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Row(
+    return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        CustomBackButton(title: 'Examss'),
-        CustomTimerWidget(),
+        CustomBackButton(title: AppLocalizations.of(context)!.exam),
+        const CustomTimerWidget(),
       ],
     );
   }

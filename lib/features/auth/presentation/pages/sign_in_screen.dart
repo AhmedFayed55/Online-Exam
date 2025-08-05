@@ -66,7 +66,7 @@ class _SignInScreenState extends State<SignInScreen> {
                     );
                   }
                   context.pushNamedAndRemoveUntil(
-                    AppRoutes.mainLayout,
+                    AppRoutes.mainLayoutRoute,
                     predicate: (route) => true,
                   );
                 },

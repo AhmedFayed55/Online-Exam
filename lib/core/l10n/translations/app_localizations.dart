@@ -297,6 +297,84 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Profile'**
   String get profile;
+
+  /// No description provided for @exam.
+  ///
+  /// In en, this message translates to:
+  /// **'Exam'**
+  String get exam;
+
+  /// No description provided for @question.
+  ///
+  /// In en, this message translates to:
+  /// **'Question'**
+  String get question;
+
+  /// No description provided for @next.
+  ///
+  /// In en, this message translates to:
+  /// **'Next'**
+  String get next;
+
+  /// No description provided for @finish.
+  ///
+  /// In en, this message translates to:
+  /// **'Finish'**
+  String get finish;
+
+  /// No description provided for @time_out.
+  ///
+  /// In en, this message translates to:
+  /// **'Time out !!'**
+  String get time_out;
+
+  /// No description provided for @view_score.
+  ///
+  /// In en, this message translates to:
+  /// **'View Score'**
+  String get view_score;
+
+  /// No description provided for @exam_score.
+  ///
+  /// In en, this message translates to:
+  /// **'Exam Score'**
+  String get exam_score;
+
+  /// No description provided for @your_score.
+  ///
+  /// In en, this message translates to:
+  /// **'Your Score'**
+  String get your_score;
+
+  /// No description provided for @correct.
+  ///
+  /// In en, this message translates to:
+  /// **'Correct'**
+  String get correct;
+
+  /// No description provided for @incorrect.
+  ///
+  /// In en, this message translates to:
+  /// **'Incorrect'**
+  String get incorrect;
+
+  /// No description provided for @show_result.
+  ///
+  /// In en, this message translates to:
+  /// **'Show Result'**
+  String get show_result;
+
+  /// No description provided for @start_again.
+  ///
+  /// In en, this message translates to:
+  /// **'Start Again'**
+  String get start_again;
+
+  /// No description provided for @of_.
+  ///
+  /// In en, this message translates to:
+  /// **'of'**
+  String get of_;
 }
 
 class _AppLocalizationsDelegate

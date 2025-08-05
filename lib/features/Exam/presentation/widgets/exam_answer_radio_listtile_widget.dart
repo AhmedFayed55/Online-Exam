@@ -1,23 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:online_exam/config/theme/colors.dart';
-import 'package:online_exam/core/classes/exam_controllers.dart';
 import 'package:online_exam/features/Exam/data/models/questions/answer.dart';
-import 'package:online_exam/features/Exam/domain/entities/question_entity.dart';
+import 'package:online_exam/features/Exam/presentation/manger/exam_cubit.dart';
 
 class ExamAnswerRadioListTileWidget extends StatelessWidget {
-  const ExamAnswerRadioListTileWidget({
-    super.key,
-    required this.questionEntity,
-    required this.answers,
-  });
-  final QuestionEntity questionEntity;
+  const ExamAnswerRadioListTileWidget({super.key, required this.answers});
   final Answer answers;
-
   @override
   Widget build(BuildContext context) {
+    final examCubit = context.read<ExamCubit>();
     return ValueListenableBuilder<String>(
-      valueListenable: ExamControllers.instance.answerNotifier,
+      valueListenable: examCubit.answerNotifier,
       builder: (context, groubValue, child) {
         return Container(
           decoration: BoxDecoration(
@@ -32,8 +27,8 @@ class ExamAnswerRadioListTileWidget extends StatelessWidget {
             value: answers.answer,
             groupValue: groubValue,
             onChanged: (value) {
-              ExamControllers.instance.answerNotifier.value = value!;
-              ExamControllers.instance.answerkey.value = answers.key!;
+              examCubit.answerNotifier.value = value!;
+              examCubit.currentAnswerKey = answers.key!;
             },
             title: Text(answers.answer!),
           ),

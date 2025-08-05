@@ -85,3 +85,7 @@ lib/features/Exam/data/models/answer/answer_input_model/answer.g.dart
 lib/features/Exam/data/models/answer/answer_input_model/answer_input_model.g.dart
 lib/features/Exam/data/models/answer/answer_input_model.g.dart
 lib/features/Exam/data/models/answer/answer.g.dart
+lib/features/Exam/data/models/checkQuestions/check_questisons.g.dart
+lib/features/Exam/data/models/checkQuestions/correct_question.g.dart
+lib/features/Exam/data/models/checkQuestions/wrong_question.g.dart
+

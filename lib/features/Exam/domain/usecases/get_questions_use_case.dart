@@ -11,5 +11,7 @@ class GetQuestionsUseCase {
   Future<Apiresult<List<QuestionEntity>>> invoke({
     required String token,
     required String examId,
-  }) => repository.getAllQuestionsOnExam(token: token, examId: examId);
+  }) async {
+    return await repository.getAllQuestionsOnExam(token: token, examId: examId);
+  }
 }

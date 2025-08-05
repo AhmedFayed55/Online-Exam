@@ -1,38 +1,51 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:online_exam/config/routing/app_routes.dart';
+import 'package:online_exam/config/routing/routing_extensions.dart';
 import 'package:online_exam/config/theme/colors.dart';
-import 'package:online_exam/core/classes/exam_controllers.dart';
-import 'package:online_exam/features/Exam/data/models/answer/answer.dart';
-import 'package:online_exam/features/Exam/domain/entities/question_entity.dart';
-import 'package:online_exam/features/Exam/presentation/cubit/exam_cubit.dart';
+import 'package:online_exam/core/l10n/translations/app_localizations.dart';
+import 'package:online_exam/features/Exam/data/models/answer/input_answers.dart';
+import 'package:online_exam/features/Exam/presentation/manger/exam_cubit.dart';
+import 'package:online_exam/features/Exam/presentation/widgets/custom_exam_button.dart';
 
 class ExamControllWidget extends StatelessWidget {
-  const ExamControllWidget({super.key, required this.questionsList});
-
-  final List<QuestionEntity> questionsList;
-  void _saveAnswer(BuildContext context) {
+  const ExamControllWidget({super.key});
+  void _saveAnswer(BuildContext context, ExamCubit cubit) {
     context.read<ExamCubit>().saveAnswer(
       answerModel: InputAnswers(
-        correct: ExamControllers.instance.answerkey.value,
         questionId:
-            questionsList[ExamControllers.instance.pageIndex.value].questionId,
+            cubit.state.listOfQuestionEntity[cubit.pageIndex].questionId,
+        correct: cubit.currentAnswerKey,
       ),
     );
   }
 
   @override
   Widget build(BuildContext context) {
+    var cubit = context.read<ExamCubit>();
     return ValueListenableBuilder(
-      valueListenable: ExamControllers.instance.questionNumberNotifier,
+      valueListenable: cubit.questionNumberNotifier,
       child: CustomExamButton(
-        text: 'Next',
+        text: AppLocalizations.of(context)!.next,
         onPressed: () {
-          ExamControllers.instance.pageController.nextPage(
-            duration: const Duration(milliseconds: 300),
-            curve: Curves.linear,
-          );
-          _saveAnswer(context);
+          if (cubit.currentAnswerKey!.isEmpty) {
+            ScaffoldMessenger.of(context).showSnackBar(
+              SnackBar(
+                content: Text(
+                  'Please Select An Answer',
+                  style: Theme.of(
+                    context,
+                  ).textTheme.bodyMedium!.copyWith(color: AppColors.white),
+                ),
+              ),
+            );
+          } else {
+            cubit.pageController.nextPage(
+              duration: const Duration(milliseconds: 300),
+              curve: Curves.linear,
+            );
+            _saveAnswer(context, cubit);
+          }
         },
         backgroundColor: AppColors.blue,
         borderColor: AppColors.blue,
@@ -41,11 +54,25 @@ class ExamControllWidget extends StatelessWidget {
         ).textTheme.labelLarge!.copyWith(color: AppColors.white),
       ),
       builder: (context, value, child) {
-        if (value == questionsList.length) {
+        if (value == cubit.state.listOfQuestionEntity.length) {
           return CustomExamButton(
-            text: 'Finish',
+            text: AppLocalizations.of(context)!.finish,
             onPressed: () {
-              _saveAnswer(context);
+              if (cubit.currentAnswerKey!.isEmpty) {
+                ScaffoldMessenger.of(context).showSnackBar(
+                  SnackBar(
+                    content: Text(
+                      'Please Select An Answer',
+                      style: Theme.of(
+                        context,
+                      ).textTheme.bodyMedium!.copyWith(color: AppColors.white),
+                    ),
+                  ),
+                );
+              } else {
+                _saveAnswer(context, cubit);
+                context.pushNamed(AppRoutes.examScoreRoute, arguments: cubit);
+              }
             },
             borderColor: AppColors.blue,
             backgroundColor: AppColors.blue,
@@ -56,46 +83,6 @@ class ExamControllWidget extends StatelessWidget {
         }
         return child!;
       },
-    );
-  }
-}
-
-class CustomExamButton extends StatelessWidget {
-  const CustomExamButton({
-    super.key,
-    required this.text,
-    required this.onPressed,
-    this.backgroundColor = AppColors.white,
-    this.borderColor,
-    required this.textStyle,
-  });
-
-  final String text;
-  final VoidCallback onPressed;
-  final Color backgroundColor;
-  final Color? borderColor;
-  final TextStyle textStyle;
-
-  @override
-  Widget build(BuildContext context) {
-    return SizedBox(
-      height: 48.h,
-      width: double.infinity,
-      child: ElevatedButton(
-        style: ElevatedButton.styleFrom(
-          backgroundColor: backgroundColor,
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(10.r),
-            side: BorderSide(
-              color: borderColor ?? Colors.transparent,
-              width: 3,
-              style: BorderStyle.solid,
-            ),
-          ),
-        ),
-        onPressed: onPressed,
-        child: Text(text, style: textStyle),
-      ),
     );
   }
 }

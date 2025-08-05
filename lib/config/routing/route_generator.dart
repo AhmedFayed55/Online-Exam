@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:online_exam/core/helpers/shared_pref.dart';
-import 'package:online_exam/core/network/api_constants.dart';
-import 'package:online_exam/features/Exam/presentation/cubit/exam_cubit.dart';
+import 'package:online_exam/features/Exam/presentation/manger/exam_cubit.dart';
+import 'package:online_exam/features/Exam/presentation/pages/exam_score_screen.dart';
 import 'package:online_exam/features/Exam/presentation/pages/exam_screen_.dart';
 import 'package:online_exam/features/main_layout/main_layout.dart';
 import 'package:online_exam/features/auth/presentation/manager/signUp/sign_up_cubit.dart';
@@ -40,8 +39,16 @@ class RouteGenerator {
         );
       // case AppRoutes.forgetPasswordRoute:
       //   return MaterialPageRoute(builder: (_) => const ForgetPasswordScreen());
-      case AppRoutes.mainLayout:
+      case AppRoutes.mainLayoutRoute:
         return MaterialPageRoute(builder: (context) => const MainLayout());
+      case AppRoutes.examScoreRoute:
+        final examCubit = settings.arguments as ExamCubit;
+        return MaterialPageRoute(
+          builder: (_) => BlocProvider.value(
+            value: examCubit,
+            child: const ExammScoreScreen(),
+          ),
+        );
 
       default:
         return unDefinedRoute();

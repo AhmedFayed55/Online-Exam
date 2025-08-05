@@ -30,9 +30,11 @@ import '../../features/Exam/data/datasources/exam_remote_data_source_impl.dart'
     as _i1018;
 import '../../features/Exam/data/repositories/exam_repo_impl.dart' as _i393;
 import '../../features/Exam/domain/repositories/exam_repo.dart' as _i713;
+import '../../features/Exam/domain/usecases/check_exam_answers_use_case.dart'
+    as _i71;
 import '../../features/Exam/domain/usecases/get_questions_use_case.dart'
     as _i593;
-import '../../features/Exam/presentation/cubit/exam_cubit.dart' as _i776;
+import '../../features/Exam/presentation/manger/exam_cubit.dart' as _i747;
 import '../../features/main_layout/explore/data/datasources/remote_data_source.dart'
     as _i572;
 import '../../features/main_layout/explore/data/datasources/remote_data_source_impl.dart'
@@ -74,15 +76,16 @@ extension GetItInjectableX on _i174.GetIt {
       () => _i960.ExploreRepositoryImpl(gh<_i572.ExploreRemoteDataSource>()),
     );
     gh.factory<_i713.ExamRepo>(
-      () => _i393.ExamRepoImpl(
-        examRemoteDataSource: gh<_i589.ExamRemoteDataSource>(),
-      ),
+      () => _i393.ExamRepoImpl(gh<_i589.ExamRemoteDataSource>()),
     );
     gh.factory<_i723.AuthRepository>(
       () => _i662.AuthRepositoryImpl(gh<_i147.AuthRemoteDataSource>()),
     );
     gh.factory<_i593.GetQuestionsUseCase>(
       () => _i593.GetQuestionsUseCase(gh<_i713.ExamRepo>()),
+    );
+    gh.factory<_i71.CheckExamAnswersUseCase>(
+      () => _i71.CheckExamAnswersUseCase(gh<_i713.ExamRepo>()),
     );
     gh.factory<_i678.GetSubjectsUseCase>(
       () => _i678.GetSubjectsUseCase(gh<_i10.ExploreRepository>()),
@@ -96,11 +99,14 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i1038.LoginUseCase>(
       () => _i1038.LoginUseCase(gh<_i723.AuthRepository>()),
     );
-    gh.factory<_i776.ExamCubit>(
-      () => _i776.ExamCubit(gh<_i593.GetQuestionsUseCase>()),
-    );
     gh.factory<_i888.AuthCubit>(
       () => _i888.AuthCubit(loginUseCase: gh<_i1038.LoginUseCase>()),
+    );
+    gh.factory<_i747.ExamCubit>(
+      () => _i747.ExamCubit(
+        gh<_i593.GetQuestionsUseCase>(),
+        gh<_i71.CheckExamAnswersUseCase>(),
+      ),
     );
     gh.factory<_i920.SignUpCubit>(
       () => _i920.SignUpCubit(gh<_i960.SignUpUseCase>()),

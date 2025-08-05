@@ -1,4 +1,3 @@
-
 import 'package:online_exam/core/helpers/regex.dart';
 
 abstract class Validations {

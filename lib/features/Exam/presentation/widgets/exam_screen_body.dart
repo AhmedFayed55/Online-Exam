@@ -4,7 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:online_exam/core/helpers/shared_pref.dart';
 import 'package:online_exam/core/helpers/spacing.dart';
 import 'package:online_exam/core/network/api_constants.dart';
-import 'package:online_exam/features/Exam/presentation/cubit/exam_cubit.dart';
+import 'package:online_exam/features/Exam/presentation/manger/exam_cubit.dart';
 import 'package:online_exam/features/Exam/presentation/widgets/custom_liner_progress_indicator.dart';
 import 'package:online_exam/features/Exam/presentation/widgets/exam_app_bar.dart';
 import 'package:online_exam/features/Exam/presentation/widgets/exam_controll_buttons_widget.dart';
@@ -33,25 +33,28 @@ class _ExamScreenBodyState extends State<ExamScreenBody> {
       padding: EdgeInsets.all(16.w),
       child: BlocBuilder<ExamCubit, ExamState>(
         builder: (context, state) {
-          if (state is ExamSucc) {
-            return Column(
-              children: [
-                const ExamAppBar(),
-                verticalSpace(22.h),
-                CustomLinerProgressIndicator(
-                  questionsLength: state.questions.length,
-                ),
-                verticalSpace(29.h),
-                ExamPageView(listOfQuestions: state.questions),
-                verticalSpace(80.h),
-                ExamControllWidget(questionsList: state.questions),
-              ],
+          if (state.questionFailre != null) {
+            return Center(
+              child: Text(
+                '${state.questionFailre!.errorMessage} with code ${state.questionFailre!.code}',
+              ),
             );
           }
-          if (state is ExamError) {
-            return Center(child: Text(state.errorMessage));
+          if (state.isExamLoading) {
+            return const Center(child: CircularProgressIndicator());
           }
-          return const Center(child: CircularProgressIndicator());
+          return Column(
+            children: [
+              const ExamAppBar(),
+              verticalSpace(22.h),
+              const CustomLinerProgressIndicator(),
+              verticalSpace(29.h),
+              const ExamPageView(),
+              verticalSpace(80.h),
+              const ExamControllWidget(),
+              verticalSpace(20.h),
+            ],
+          );
         },
       ),
     );

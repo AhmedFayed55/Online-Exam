@@ -3,10 +3,10 @@ import 'package:online_exam/core/helpers/shared_pref.dart';
 import 'package:online_exam/core/utils/app_constants.dart';
 
 String? getInitialRoute() {
-  final isremember = SharedPrefHelper.getData(key: AppConstants.isRemember);
-  if (isremember == false || isremember == null) {
+  final isRememeber = SharedPrefHelper.getData(key: AppConstants.isRemember);
+  if (isRememeber == false || isRememeber == null) {
     return AppRoutes.signInRoute;
   } else {
-    return AppRoutes.mainLayout;
+    return AppRoutes.mainLayoutRoute;
   }
 }
