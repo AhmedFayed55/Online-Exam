@@ -8,7 +8,8 @@ import 'package:online_exam/features/auth/domain/repositories/auth_repo.dart';
 class SignUpUseCase {
   final AuthRepository _authRepo;
   SignUpUseCase(this._authRepo);
-  Future<Apiresult<UserEntity>> call(
+
+  Future<ApiResult<UserEntity>> call(
     RegisterInputModel registerInputModel,
   ) async => await _authRepo.signUp(registerInputModel);
 }

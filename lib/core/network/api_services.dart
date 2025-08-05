@@ -3,14 +3,15 @@ import 'package:injectable/injectable.dart';
 import 'package:online_exam/features/Exam/data/models/answer/user_answer_input_model.dart';
 import 'package:online_exam/features/Exam/data/models/checkQuestions/check_questisons.dart';
 import 'package:online_exam/features/Exam/data/models/questions/questions_dto.dart';
+import 'package:online_exam/core/utils/app_constants.dart';
 import 'package:online_exam/features/auth/data/models/login/login_response_dm.dart';
 import 'package:online_exam/features/auth/data/models/userInputModels/register_input_model.dart';
 import 'package:online_exam/features/auth/data/models/userModel/user_model.dart';
 import 'package:online_exam/features/main_layout/explore/data/models/subjects_dto/subjects_dto.dart';
+import 'package:online_exam/features/subject_exams/data/model/get_exams_on_subject_dto.dart';
 import 'package:retrofit/retrofit.dart';
 import '../../features/auth/data/models/login/login_request.dart';
 import 'api_constants.dart';
-
 part 'api_services.g.dart';
 
 @RestApi()
@@ -25,6 +26,7 @@ abstract class ApiServices {
   Future<UserModelDto> signUp(@Body() RegisterInputModel registerInputModel);
   @GET(ApiConstants.getSubjectsEndpoint)
   Future<SubjectsDto> getSubjects(@Header(ApiConstants.token) String token);
+
   @GET(ApiConstants.getQuestionsEndpoint)
   Future<QuestionsDto> getAllQuestionsOnExam(
     @Header(ApiConstants.token) String token,
@@ -34,5 +36,11 @@ abstract class ApiServices {
   Future<CheckQuestisonsDto> checkExamAnswers(
     @Header(ApiConstants.token) String token,
     @Body() UserAnswerInputModel inputModel,
+  );
+
+  @GET(ApiConstants.getAllSubjectsExamsOnSubjectEndpoint)
+  Future<GetExamsOnSubjectDto> getExamsOnSubject(
+    @Header(AppConstants.token) String token,
+    @Query(AppConstants.subject) String subjectId,
   );
 }

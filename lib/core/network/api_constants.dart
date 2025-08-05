@@ -8,4 +8,5 @@ abstract class ApiConstants {
   static const String checkAnswerEndpoint = "questions/check";
   static const String token = "token";
   static const String examId = "exam";
+  static const String getAllSubjectsExamsOnSubjectEndpoint = "exams";
 }

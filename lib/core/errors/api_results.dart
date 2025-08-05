@@ -1,13 +1,13 @@
 import 'package:online_exam/core/errors/failure.dart';
 
-sealed class Apiresult<T> {}
+sealed class ApiResult<T> {}
 
-class ApiSuccessResult<T> extends Apiresult<T> {
+class ApiSuccessResult<T> extends ApiResult<T> {
   final T data;
   ApiSuccessResult({required this.data});
 }
 
-class ApiErrorResult<T> extends Apiresult<T> {
+class ApiErrorResult<T> extends ApiResult<T> {
   final Failure failure;
   ApiErrorResult({required this.failure});
 }

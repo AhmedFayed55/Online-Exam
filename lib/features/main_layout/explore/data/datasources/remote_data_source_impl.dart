@@ -14,7 +14,7 @@ class ExploreRemoteDataSourceImpl implements ExploreRemoteDataSource {
   ExploreRemoteDataSourceImpl(this._apiServices);
 
   @override
-  Future<Apiresult<List<SubjectEntity>>> getSubjects({
+  Future<ApiResult<List<SubjectEntity>>> getSubjects({
     required String token,
   }) async {
     try {
