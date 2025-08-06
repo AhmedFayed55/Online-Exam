@@ -7,6 +7,13 @@ import 'package:online_exam/features/auth/data/models/userModel/user_model.dart'
 import 'package:online_exam/features/main_layout/explore/data/models/subjects_dto/subjects_dto.dart';
 import 'package:online_exam/features/subject_exams/data/model/get_exams_on_subject_dto.dart';
 import 'package:retrofit/retrofit.dart';
+
+import '../../features/auth/data/models/forget_password/email_verification_input_model.dart';
+import '../../features/auth/data/models/forget_password/forget_password_input_model.dart';
+import '../../features/auth/data/models/forget_password/forget_password_response_dto.dart';
+import '../../features/auth/data/models/forget_password/reset_password_input_model.dart';
+import '../../features/auth/data/models/forget_password/reset_password_response_dto.dart';
+import '../../features/auth/data/models/forget_password/verify_reset_code_response_dto.dart';
 import '../../features/auth/data/models/login/login_request.dart';
 import 'api_constants.dart';
 
@@ -23,10 +30,21 @@ abstract class ApiServices {
   @POST(ApiConstants.signUpEndpoint)
   Future<UserModelDto> signUp(@Body() RegisterInputModel registerInputModel);
   @GET(ApiConstants.getSubjectsEndpoint)
-  Future<SubjectsDto> getSubjects(@Header(ApiConstants.token) String token);
+  Future<SubjectsDto> getSubjects();
 
   @GET(ApiConstants.getAllSubjectsExamsOnSubjectEndpoint)
   Future<GetExamsOnSubjectDto> getExamsOnSubject(
-      @Header(AppConstants.token) String token,
       @Query(AppConstants.subject) String subjectId);
+
+  @POST(ApiConstants.forgetPasswordEndpoint)
+  Future<ForgetPasswordResponseDto> requestPasswordReset(
+      @Body() ForgetPasswordInputModel body);
+
+  @POST(ApiConstants.verifyResetCodeEndpoint)
+  Future<VerifyResetCodeResponseDto> confirmCode(
+      @Body() EmailVerificationInputModel resetCode);
+
+  @PUT(ApiConstants.resetPasswordEndpoint)
+  Future<ResetPasswordResponseDto> resetPassword(
+      @Body() ResetPasswordInputModel forgetPasswordInputModel);
 }

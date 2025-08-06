@@ -33,6 +33,7 @@ dependencies:
   internet_connection_checker: ^3.0.1
   flutter_svg: ^2.2.0
   lottie: ^3.3.1
+  flutter_otp_text_field: ^1.5.1+1
 
 
 
@@ -52,11 +53,11 @@ flutter:
 
   assets:
     - Assets/images/
-    - assets/images/
-    - assets/svgs/
+    - assets/images/exam_test.png
+    - assets/images/home.svg
+    - assets/images/profile.svg
+    - assets/images/results.svg
     - assets/animations/
-  #   - images/a_dot_burr.jpeg
-  #   - images/a_dot_ham.jpeg
   # fonts:
   #   - family: Schyler
   #     fonts:

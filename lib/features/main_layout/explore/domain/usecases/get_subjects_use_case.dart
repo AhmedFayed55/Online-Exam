@@ -9,6 +9,6 @@ class GetSubjectsUseCase {
   final ExploreRepository _subjectRepository;
   GetSubjectsUseCase(this._subjectRepository);
 
-  Future<ApiResult<List<SubjectEntity>>> invoke({required String token}) =>
-      _subjectRepository.getSubjects(token: token);
+  Future<ApiResult<List<SubjectEntity>>> invoke() =>
+      _subjectRepository.getSubjects();
 }

@@ -18,24 +18,31 @@
   "confirm_password": "Confirm password",
   "enter_phone_number": "Enter phone number",
   "phone_number": "Phone number",
-  "sign_up_button" :  "Signup",
+  "sign_up_button": "Signup",
   "already_have_an_account": "Already have an account?",
-  "ok" : "OK",
+  "ok": "OK",
   "acount_created_successfully": "Account created successfully",
-  "success" : "Success",
+  "success": "Success",
   "no_internet_connection": "No internet connection",
   "loading": "Loading...",
   "error": "Error",
   "login_successfully": "Login successfully",
-  "survey" : "Survey",
-  "search" : "Search",
-  "browse_by_subject" : "Browse by subject",
-  "explore" : "Explore",
-  "result" : "Result",
-  "profile" : "Profile"
+  "survey": "Survey",
+  "search": "Search",
+  "browse_by_subject": "Browse by subject",
+  "explore": "Explore",
+  "result": "Result",
+  "profile": "Profile",
+  "reset_password": "Reset password",
+  "password_validation": "Password must not be empty and must contain\n6 characters with upper case letter and one\nnumber at least",
+  "resend": " Resend",
+  "didnt_receive_code": "Didn't receive code?",
+  "enter_verification_code": "Please enter your code that send to your\nemail address",
+  "email_verification": "Email verification",
+  "invalid_email": "This Email is not valid",
+  "enter_associated_email": "Please enter your email associated to\nyour account",
+  "continue_word": "Continue",
+  "new_password": "New password",
+  "invalid_code": "Invalid code",
+  "code_resend_successfully": "Code resent successfully"
 }
-
- 
-  
-
-

@@ -1,17 +1,22 @@
 import 'package:dio/dio.dart';
 import 'package:injectable/injectable.dart';
+import 'package:online_exam/core/helpers/shared_pref.dart';
 import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 
 import '../di/di.dart';
+import '../utils/app_constants.dart';
 import 'api_constants.dart';
 
 @module
 abstract class DioModule {
+
   @lazySingleton
   Dio provideDio() {
     Dio dio = Dio();
     dio.options.baseUrl = ApiConstants.baseUrl;
-    dio.options.headers = {'Content-Type': 'application/json'};
+    dio.options.headers = {'Content-Type': 'application/json',
+      AppConstants.token: SharedPrefHelper.getData(key: AppConstants.token) ??
+          ''};
     dio.interceptors.add(getIt.get<PrettyDioLogger>());
     return dio;
   }
@@ -28,3 +33,4 @@ abstract class DioModule {
     );
   }
 }
+

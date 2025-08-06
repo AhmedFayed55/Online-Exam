@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 abstract class AppColors {
-  static const Color white = Color(0xfff9f9f9);
+  static const Color white = Color(0xffF9F9F9);
 
   static const Color white2 = Color(0xffffffff);
 
@@ -18,6 +18,8 @@ abstract class AppColors {
   static const Color lightGreen = Color(0xffCAF9CC);
 
   static const Color hintColor = Color(0xffA6A6A6);
+
+  static const Color otpFieldBorderColor = Color(0xffDFE7F7);
 
   static const MaterialColor blue = MaterialColor(0xFF02369C, <int, Color>{
     0: Color(0xFF02369C), // base color

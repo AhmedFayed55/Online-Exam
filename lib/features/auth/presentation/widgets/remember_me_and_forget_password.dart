@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:online_exam/config/routing/app_routes.dart';
+import 'package:online_exam/config/routing/routing_extensions.dart';
+
 import '../../../../core/l10n/translations/app_localizations.dart';
 
 class RememberMeAndForgetPassword extends StatelessWidget {
@@ -29,7 +32,7 @@ class RememberMeAndForgetPassword extends StatelessWidget {
         ),
         TextButton(
           onPressed: () {
-            //todo: navigate to forget pass screen
+            context.pushNamed(AppRoutes.forgetPasswordRoute);
           },
           child: Text(
             '${AppLocalizations.of(context)!.forget_password}?',

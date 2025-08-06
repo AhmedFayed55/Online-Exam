@@ -297,6 +297,78 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Profile'**
   String get profile;
+
+  /// No description provided for @reset_password.
+  ///
+  /// In en, this message translates to:
+  /// **'Reset password'**
+  String get reset_password;
+
+  /// No description provided for @password_validation.
+  ///
+  /// In en, this message translates to:
+  /// **'Password must not be empty and must contain\n6 characters with upper case letter and one\nnumber at least'**
+  String get password_validation;
+
+  /// No description provided for @resend.
+  ///
+  /// In en, this message translates to:
+  /// **' Resend'**
+  String get resend;
+
+  /// No description provided for @didnt_receive_code.
+  ///
+  /// In en, this message translates to:
+  /// **'Didn\'t receive code?'**
+  String get didnt_receive_code;
+
+  /// No description provided for @enter_verification_code.
+  ///
+  /// In en, this message translates to:
+  /// **'Please enter your code that send to your\nemail address'**
+  String get enter_verification_code;
+
+  /// No description provided for @email_verification.
+  ///
+  /// In en, this message translates to:
+  /// **'Email verification'**
+  String get email_verification;
+
+  /// No description provided for @invalid_email.
+  ///
+  /// In en, this message translates to:
+  /// **'This Email is not valid'**
+  String get invalid_email;
+
+  /// No description provided for @enter_associated_email.
+  ///
+  /// In en, this message translates to:
+  /// **'Please enter your email associated to\nyour account'**
+  String get enter_associated_email;
+
+  /// No description provided for @continue_word.
+  ///
+  /// In en, this message translates to:
+  /// **'Continue'**
+  String get continue_word;
+
+  /// No description provided for @new_password.
+  ///
+  /// In en, this message translates to:
+  /// **'New password'**
+  String get new_password;
+
+  /// No description provided for @invalid_code.
+  ///
+  /// In en, this message translates to:
+  /// **'Invalid code'**
+  String get invalid_code;
+
+  /// No description provided for @code_resend_successfully.
+  ///
+  /// In en, this message translates to:
+  /// **'Code resent successfully'**
+  String get code_resend_successfully;
 }
 
 class _AppLocalizationsDelegate
