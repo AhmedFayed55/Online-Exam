@@ -6,6 +6,7 @@ import 'package:online_exam/config/routing/routing_extensions.dart';
 import 'package:online_exam/core/helpers/flutter_toast.dart';
 import 'package:online_exam/core/helpers/spacing.dart';
 import 'package:online_exam/core/l10n/translations/app_localizations.dart';
+import 'package:online_exam/core/utils/app_images.dart';
 import 'package:online_exam/features/main_layout/profile/presentation/manager/edit_profile_cubit.dart';
 import 'package:online_exam/features/main_layout/profile/presentation/manager/edit_profile_event.dart';
 import 'package:online_exam/features/main_layout/profile/presentation/manager/edit_profile_state.dart';
@@ -103,6 +104,43 @@ class _ProfileScreenState extends State<ProfileScreen> {
 
                 return Column(
                   children: [
+                    Stack(
+                      children: [
+                        CircleAvatar(
+                          radius: 50.r,
+                          backgroundImage: state.profileImage != null
+                              ? FileImage(state.profileImage!)
+                              : const AssetImage(AppImages.profileImage)
+                                    as ImageProvider,
+                        ),
+                        Positioned(
+                          bottom: 0,
+                          right: 0,
+                          child: GestureDetector(
+                            onTap: () {
+                              viewModel.doIntent(PickImageEvent());
+                            },
+                            child: Container(
+                              padding: REdgeInsets.all(5),
+                              decoration: BoxDecoration(
+                                color: Colors.blue,
+                                shape: BoxShape.circle,
+                                border: Border.all(
+                                  color: Colors.white,
+                                  width: 2,
+                                ),
+                              ),
+                              child: Icon(
+                                Icons.camera_alt,
+                                color: Colors.white,
+                                size: 20.sp,
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                    verticalSpace(24),
                     EditProfileFields(
                       emailController: viewModel.emailController,
                       firstNameController: viewModel.firstNameController,
