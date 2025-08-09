@@ -109,4 +109,31 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get profile => 'Profile';
+
+  @override
+  String get update => 'Update';
+
+  @override
+  String get reset_password => 'Reset Password';
+
+  @override
+  String get current_password => 'Current Password';
+
+  @override
+  String get new_password => 'New Password';
+
+  @override
+  String get try_again => 'Try Again';
+
+  @override
+  String get change => 'Change';
+
+  @override
+  String get profile_edited_successfully => 'Profile edited successfully';
+
+  @override
+  String get please_wait_while_changing => 'Please wait while changing';
+
+  @override
+  String get password_changed_successfully => 'Password changed successfully';
 }

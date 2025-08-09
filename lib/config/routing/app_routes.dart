@@ -6,4 +6,6 @@ abstract class AppRoutes {
   static const String subjectExamsScreen = "/subjectExamsScreen";
   static const String specificExamScreen = "/specific";
   static const String homeRoute = "/home";
+  static const String profileScreenRoute = "/profileScreen";
+  static const String changePassword = "/changePassword";
 }
