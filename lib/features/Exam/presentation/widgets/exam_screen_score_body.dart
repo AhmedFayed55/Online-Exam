@@ -13,6 +13,7 @@ import 'package:online_exam/features/Exam/presentation/manger/exam_cubit.dart';
 import 'package:online_exam/features/Exam/presentation/widgets/custom_circle_percent_indactor.dart';
 import 'package:online_exam/features/Exam/presentation/widgets/user_answers_info.dart';
 import 'package:online_exam/features/auth/presentation/widgets/custom_app_bar.dart';
+import 'package:online_exam/features/main_layout/main_layout.dart';
 
 class ExamScreenScoreBody extends StatefulWidget {
   const ExamScreenScoreBody({super.key});
@@ -70,7 +71,15 @@ class _ExamScreenScoreBodyState extends State<ExamScreenScoreBody> {
                 height: 48.h,
                 width: double.infinity,
                 child: ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.pushAndRemoveUntil(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const MainLayout(initiaIndex: 1),
+                      ),
+                      (route) => false,
+                    );
+                  },
                   child: Text(
                     AppLocalizations.of(context)!.show_result,
                     style: Theme.of(

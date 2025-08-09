@@ -1,8 +1,14 @@
 import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:hive_flutter/hive_flutter.dart';
+import 'package:online_exam/config/routing/app_routes.dart';
+import 'package:online_exam/core/functions/initial_route.dart';
 import 'package:online_exam/core/helpers/shared_pref.dart';
-import 'config/routing/app_routes.dart';
+import 'package:online_exam/core/utils/app_constants.dart';
+import 'package:online_exam/features/Exam/data/models/questions/answer.dart';
+import 'package:online_exam/features/main_layout/results/domain/entities/solved_exam_entity.dart';
+import 'package:online_exam/features/main_layout/results/domain/entities/solved_questions_entity.dart';
 import 'config/routing/route_generator.dart';
 import 'config/theme/app_theme.dart';
 import 'core/di/di.dart';
@@ -15,6 +21,11 @@ void main() async {
   Bloc.observer = MyBlocObserver();
   await configureDependencies();
   await SharedPrefHelper.init();
+  await Hive.initFlutter();
+  Hive.registerAdapter(SolvedExamEntityAdapter());
+  Hive.registerAdapter(SolvedQuestionEntityAdapter());
+  Hive.registerAdapter(AnswerAdapter());
+  await Hive.openBox<SolvedExamEntity>(AppConstants.examBoxName);
   runApp(const OnlineExam());
 }
 
@@ -33,8 +44,8 @@ class OnlineExam extends StatelessWidget {
         supportedLocales: AppLocalizations.supportedLocales,
         debugShowCheckedModeBanner: false,
         onGenerateRoute: RouteGenerator.getRoute,
-        initialRoute: AppRoutes.examRoute,
-        //  getInitialRoute(),
+        initialRoute: getInitialRoute(),
+
         theme: AppTheme.lightTheme,
       ),
     );

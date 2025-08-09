@@ -11,8 +11,8 @@ import 'package:online_exam/features/Exam/presentation/widgets/exam_controll_but
 import 'package:online_exam/features/Exam/presentation/widgets/exam_page_view.dart';
 
 class ExamScreenBody extends StatefulWidget {
-  const ExamScreenBody({super.key});
-
+  const ExamScreenBody({super.key, required this.examId});
+  final String examId;
   @override
   State<ExamScreenBody> createState() => _ExamScreenBodyState();
 }
@@ -22,7 +22,7 @@ class _ExamScreenBodyState extends State<ExamScreenBody> {
   void initState() {
     context.read<ExamCubit>().getAllQuestionsOnExam(
       token: SharedPrefHelper.getData(key: ApiConstants.token) as String,
-      examId: '670070a830a3c3c1944a9c63',
+      examId: widget.examId,
     );
     super.initState();
   }

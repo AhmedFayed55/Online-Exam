@@ -45,5 +45,9 @@
   "incorrect" : "Incorrect",
   "show_result" : "Show Result",
   "start_again" : "Start Again",
-  "of_": "of"
+  "of_": "of",
+  "answers" : "Answers",
+  "results" : "Results",
+  "you_have_no_results" : "You have no results"
+
 }

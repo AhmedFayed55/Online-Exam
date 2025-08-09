@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:online_exam/config/routing/app_routes.dart';
+import 'package:online_exam/config/routing/routing_extensions.dart';
 import 'package:online_exam/core/helpers/spacing.dart';
 import 'package:online_exam/core/utils/app_constants.dart';
 import 'package:online_exam/core/utils/app_images.dart';
@@ -81,7 +83,7 @@ class SpecificExamScreen extends StatelessWidget {
             width: double.infinity,
             child: ElevatedButton(
               onPressed: () {
-                // Navigate to the exam questions screen
+                context.pushNamed(AppRoutes.examRoute, arguments: examData.id);
               },
               child: const Text(AppConstants.start),
             ),
