@@ -32,7 +32,16 @@
   "browse_by_subject" : "Browse by subject",
   "explore" : "Explore",
   "result" : "Result",
-  "profile" : "Profile"
+  "profile": "Profile",
+  "update": "Update",
+  "reset_password": "Reset Password",
+  "current_password": "Current Password",
+  "new_password": "New Password",
+  "try_again": "Try Again",
+  "change": "Change",
+  "profile_edited_successfully": "Profile edited successfully",
+  "please_wait_while_changing": "Please wait while changing",
+  "password_changed_successfully": "Password changed successfully"
 }
 
  

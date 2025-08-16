@@ -4,6 +4,7 @@ import 'package:online_exam/core/di/di.dart';
 import 'package:online_exam/core/helpers/shared_pref.dart';
 import 'package:online_exam/core/network/api_constants.dart';
 import 'package:online_exam/features/main_layout/explore/presentation/manger/cubit/explore_cubit.dart';
+import 'package:online_exam/features/main_layout/profile/presentation/page/profile_screen.dart';
 import 'package:online_exam/features/main_layout/widgets/button_nav_bar.dart';
 import 'package:online_exam/features/main_layout/explore/presentation/pages/explore_screen.dart';
 
@@ -39,7 +40,7 @@ class _MainLayoutState extends State<MainLayout> {
             child: const ExploreScreen(),
           ),
           const Center(child: Text('result')),
-          const Center(child: Text('profile')),
+          const ProfileScreen(),
         ],
       ),
     );
