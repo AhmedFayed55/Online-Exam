@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:online_exam/features/auth/domain/entities/login/user_entity.dart';
 
 class EditProfileState {
@@ -15,6 +17,8 @@ class EditProfileState {
   String? successChangePassword;
   String? successEditProfile;
 
+  File? profileImage;
+
   EditProfileState({
     this.isLoadingGetUserData = false,
     this.isLoadingChangePassword = false,
@@ -27,6 +31,7 @@ class EditProfileState {
     this.successGetUserData,
     this.successEditProfile,
     this.userData,
+    this.profileImage,
   });
 
   EditProfileState copyWith({
@@ -41,6 +46,7 @@ class EditProfileState {
     String? successChangePassword,
     String? successEditProfile,
     UserEntity? userData,
+    File? profileImage,
   }) {
     return EditProfileState(
       isLoadingGetUserData: isLoadingGetUserData ?? this.isLoadingGetUserData,
@@ -56,6 +62,7 @@ class EditProfileState {
           successChangePassword ?? this.successChangePassword,
       successEditProfile: successEditProfile ?? this.successEditProfile,
       userData: userData ?? this.userData,
+      profileImage: profileImage ?? this.profileImage,
     );
   }
 }

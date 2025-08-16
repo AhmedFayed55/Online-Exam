@@ -5,3 +5,5 @@ class GetUserDataEvent extends EditProfileEvent {}
 class ChangePasswordEvent extends EditProfileEvent {}
 
 class EditProfileEventWhenSubmit extends EditProfileEvent {}
+
+class PickImageEvent extends EditProfileEvent {}

@@ -1,5 +1,8 @@
+import 'dart:io';
+
 import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:injectable/injectable.dart';
 import 'package:online_exam/core/errors/api_results.dart';
 import 'package:online_exam/features/auth/domain/entities/login/user_entity.dart';
@@ -12,6 +15,9 @@ import 'package:online_exam/features/main_layout/profile/domain/use_cases/edit_p
 import 'package:online_exam/features/main_layout/profile/domain/use_cases/get_user_data_use_case.dart';
 import 'package:online_exam/features/main_layout/profile/presentation/manager/edit_profile_event.dart';
 import 'package:online_exam/features/main_layout/profile/presentation/manager/edit_profile_state.dart';
+
+import '../../../../../core/helpers/shared_pref.dart';
+import '../../../../../core/utils/app_constants.dart';
 
 @injectable
 class EditProfileCubit extends Cubit<EditProfileState> {
@@ -58,12 +64,16 @@ class EditProfileCubit extends Cubit<EditProfileState> {
             userName: userNameController.text,
           ),
         );
+      case PickImageEvent():
+        _pickImage();
     }
   }
 
   Future<void> _getUserData() async {
     emit(state.copyWith(isLoadingGetUserData: true));
+
     ApiResult<UserEntity> result = await getUserDataUseCase.invoke();
+
     switch (result) {
       case ApiSuccessResult<UserEntity>():
         emit(
@@ -73,7 +83,17 @@ class EditProfileCubit extends Cubit<EditProfileState> {
             userData: result.data,
           ),
         );
+        final savedImagePath = SharedPrefHelper.getData(
+          key: AppConstants.profilePhoto,
+        ) as String?;
+
+        if (savedImagePath != null && savedImagePath.isNotEmpty) {
+          emit(
+            state.copyWith(profileImage: File(savedImagePath)),
+          );
+        }
         break;
+
       case ApiErrorResult<UserEntity>():
         emit(
           state.copyWith(
@@ -152,4 +172,22 @@ class EditProfileCubit extends Cubit<EditProfileState> {
       }
     }
   }
+
+  Future<void> _pickImage() async {
+    final picker = ImagePicker();
+    final pickedFile = await picker.pickImage(source: ImageSource.gallery);
+
+    if (pickedFile != null) {
+      final file = File(pickedFile.path);
+
+      await SharedPrefHelper.saveData(
+        key: AppConstants.profilePhoto,
+        val: file.path,
+      );
+
+      emit(state.copyWith(profileImage: file));
+      checkIfEdited();
+    }
+  }
+
 }
