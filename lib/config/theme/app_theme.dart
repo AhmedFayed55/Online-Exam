@@ -21,6 +21,7 @@ abstract class AppTheme {
       ),
       elevatedButtonTheme: ElevatedButtonThemeData(
         style: ElevatedButton.styleFrom(
+          minimumSize: const Size(double.infinity, 50),
           disabledBackgroundColor: AppColors.black[30],
           disabledForegroundColor: AppColors.white,
           backgroundColor: AppColors.blue[0],
@@ -122,20 +123,10 @@ abstract class AppTheme {
               color: AppColors.black,
               fontWeight: AppFontWeight.regular
           ),
-          displayMedium: TextStyle(
-              fontSize: 18.sp,
-              fontWeight: AppFontWeight.medium,
-              color: AppColors.black
-          ),
-          displaySmall: TextStyle(
-              fontSize: 13.sp,
-              fontWeight: AppFontWeight.regular,
-              color: AppColors.black
-          ),
-          headlineLarge: TextStyle(
-              color: AppColors.black,
-              fontWeight: AppFontWeight.semiBold,
-              fontSize: 20.sp
+          displayLarge: TextStyle(
+            fontSize: 18.sp,
+            fontWeight: AppFontWeight.medium,
+            color: AppColors.black,
           )
       ),
     );

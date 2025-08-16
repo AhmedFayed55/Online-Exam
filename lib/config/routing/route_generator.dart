@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:online_exam/features/main_layout/main_layout.dart';
+import 'package:online_exam/features/auth/presentation/manager/auth_cubit.dart';
 import 'package:online_exam/features/auth/presentation/manager/signUp/sign_up_cubit.dart';
 import 'package:online_exam/features/auth/presentation/pages/sign_up_screen.dart';
-import 'package:online_exam/features/auth/presentation/manager/auth_cubit.dart';
 import 'package:online_exam/features/main_layout/main_layout.dart';
 import 'package:online_exam/features/specific_exam/presentation/pages/specific_exam.dart';
 import 'package:online_exam/features/subject_exams/domain/entities/exams_on_subject_entity.dart';
 import 'package:online_exam/features/subject_exams/presentation/pages/subject_exams_screen.dart';
+
 import '../../core/di/di.dart';
+import '../../features/auth/presentation/pages/forget_password_screen.dart';
 import '../../features/auth/presentation/pages/sign_in_screen.dart';
 import '../../features/main_layout/explore/domain/entities/subject_entity.dart';
 import '../../features/main_layout/profile/presentation/manager/edit_profile_cubit.dart';
@@ -35,8 +36,8 @@ class RouteGenerator {
           ),
         );
 
-      // case AppRoutes.forgetPasswordRoute:
-      //   return MaterialPageRoute(builder: (_) => const ForgetPasswordScreen());
+      case AppRoutes.forgetPasswordRoute:
+        return MaterialPageRoute(builder: (_) => const ForgetPasswordScreen());
 
       case AppRoutes.mainLayout:
         return MaterialPageRoute(builder: (context) => const MainLayout());

@@ -1,5 +1,6 @@
 // ignore: unused_import
 import 'package:intl/intl.dart' as intl;
+
 import 'app_localizations.dart';
 
 // ignore_for_file: type=lint
@@ -111,6 +112,43 @@ class AppLocalizationsEn extends AppLocalizations {
   String get profile => 'Profile';
 
   @override
+  String get reset_password => 'Reset password';
+
+  @override
+  String get password_validation =>
+      'Password must not be empty and must contain\n6 characters with upper case letter and one\nnumber at least';
+
+  @override
+  String get resend => ' Resend';
+
+  @override
+  String get didnt_receive_code => 'Didn\'t receive code?';
+
+  @override
+  String get enter_verification_code =>
+      'Please enter your code that send to your\nemail address';
+
+  @override
+  String get email_verification => 'Email verification';
+
+  @override
+  String get invalid_email => 'This Email is not valid';
+
+  @override
+  String get enter_associated_email =>
+      'Please enter your email associated to\nyour account';
+
+  @override
+  String get continue_word => 'Continue';
+
+  @override
+  String get new_password => 'New password';
+
+  @override
+  String get invalid_code => 'Invalid code';
+
+  @override
+  String get code_resend_successfully => 'Code resent successfully';
   String get update => 'Update';
 
   @override

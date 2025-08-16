@@ -3,8 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:online_exam/core/functions/initial_route.dart';
 import 'package:online_exam/core/helpers/shared_pref.dart';
-import 'package:online_exam/core/utils/app_constants.dart';
-import 'config/routing/app_routes.dart';
+
 import 'config/routing/route_generator.dart';
 import 'config/theme/app_theme.dart';
 import 'core/di/di.dart';
