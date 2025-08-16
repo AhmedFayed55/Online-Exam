@@ -12,6 +12,9 @@ import '../../core/di/di.dart';
 import '../../features/auth/presentation/pages/forget_password_screen.dart';
 import '../../features/auth/presentation/pages/sign_in_screen.dart';
 import '../../features/main_layout/explore/domain/entities/subject_entity.dart';
+import '../../features/main_layout/profile/presentation/manager/edit_profile_cubit.dart';
+import '../../features/main_layout/profile/presentation/page/change_password_screen.dart';
+import '../../features/main_layout/profile/presentation/page/profile_screen.dart';
 import 'app_routes.dart';
 
 class RouteGenerator {
@@ -49,6 +52,16 @@ class RouteGenerator {
         final args = settings.arguments as ExamsEntity;
         return MaterialPageRoute(
           builder: (context) => SpecificExamScreen(examData: args),
+        );
+
+      case AppRoutes.profileScreenRoute:
+        return MaterialPageRoute(builder: (context) => const ProfileScreen());
+      case AppRoutes.changePassword:
+        return MaterialPageRoute(
+          builder: (context) => BlocProvider(
+            create: (context) => getIt<EditProfileCubit>(),
+            child: const ChangePasswordScreen(),
+          ),
         );
 
       default:

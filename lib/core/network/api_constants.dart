@@ -8,4 +8,7 @@ abstract class ApiConstants {
   static const String getAllSubjectsExamsOnSubjectEndpoint = "exams";
   static const String verifyResetCodeEndpoint = "auth/verifyResetCode";
   static const String resetPasswordEndpoint = "auth/resetPassword";
+  static const String getUserData = "auth/profileData";
+  static const String changePassword = "auth/changePassword";
+  static const String editProfile = "auth/editProfile";
 }
