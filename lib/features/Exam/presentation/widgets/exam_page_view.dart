@@ -19,7 +19,7 @@ class ExamPageView extends StatelessWidget {
       },
       itemCount: examCubit.state.listOfQuestionEntity.length,
       controller: examCubit.pageController,
-      // physics: const NeverScrollableScrollPhysics(),
+      physics: const NeverScrollableScrollPhysics(),
       itemBuilder: (context, index) => ExamWidget(
         questionEntity: examCubit.state.listOfQuestionEntity[index],
       ),

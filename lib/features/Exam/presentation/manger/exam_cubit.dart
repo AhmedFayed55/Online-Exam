@@ -9,14 +9,19 @@ import 'package:online_exam/features/Exam/domain/entities/question_entity.dart';
 import 'package:online_exam/features/Exam/domain/entities/score_entity.dart';
 import 'package:online_exam/features/Exam/domain/usecases/check_exam_answers_use_case.dart';
 import 'package:online_exam/features/Exam/domain/usecases/get_questions_use_case.dart';
+import 'package:online_exam/features/Exam/domain/usecases/store_exam_history_localy.dart';
 part 'exam_state.dart';
 
 @injectable
 class ExamCubit extends Cubit<ExamState> {
   final GetQuestionsUseCase _getQuestionsUseCase;
   final CheckExamAnswersUseCase _checkExamAnswersUseCase;
-  ExamCubit(this._getQuestionsUseCase, this._checkExamAnswersUseCase)
-    : super(ExamState());
+  final StoreExamHistoryLocalyUseCase _storeExamHistoryLocalyUseCase;
+  ExamCubit(
+    this._getQuestionsUseCase,
+    this._checkExamAnswersUseCase,
+    this._storeExamHistoryLocalyUseCase,
+  ) : super(ExamState());
   String? currentAnswerKey = '';
   String? questionId = '';
   int pageIndex = 0;
@@ -64,6 +69,11 @@ class ExamCubit extends Cubit<ExamState> {
     );
     switch (result) {
       case ApiSuccessResult<ScoreEntity>():
+        await _storeExamHistoryLocalyUseCase.invoke(
+          listOfQuestisonEntity: state.listOfQuestionEntity,
+          scoreEntity: result.data,
+          userExamDuration: currentExamTime,
+        );
         emit(state.copyWith(isScoreLoading: false, scoreEntity: result.data));
       case ApiErrorResult<ScoreEntity>():
         emit(

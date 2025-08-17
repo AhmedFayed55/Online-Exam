@@ -39,5 +39,7 @@ class CheckQuestisonsDto {
     correct: correct ?? 0,
     incorrect: wrong ?? 0,
     total: total ?? '0',
+    wrongQuestions: wrongQuestions ?? [],
+    correctQuestions: correctQuestions ?? [],
   );
 }

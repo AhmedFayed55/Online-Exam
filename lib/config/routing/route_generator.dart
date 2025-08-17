@@ -7,7 +7,8 @@ import 'package:online_exam/features/main_layout/main_layout.dart';
 import 'package:online_exam/features/auth/presentation/manager/signUp/sign_up_cubit.dart';
 import 'package:online_exam/features/auth/presentation/pages/sign_up_screen.dart';
 import 'package:online_exam/features/auth/presentation/manager/auth_cubit.dart';
-import 'package:online_exam/features/main_layout/main_layout.dart';
+import 'package:online_exam/features/main_layout/results/domain/entities/solved_questions_entity.dart';
+import 'package:online_exam/features/main_layout/results/presentation/pages/result_answers_screen.dart';
 import 'package:online_exam/features/specific_exam/presentation/pages/specific_exam.dart';
 import 'package:online_exam/features/subject_exams/domain/entities/exams_on_subject_entity.dart';
 import 'package:online_exam/features/subject_exams/presentation/pages/subject_exams_screen.dart';
@@ -35,17 +36,20 @@ class RouteGenerator {
           ),
         );
       case AppRoutes.examRoute:
+        final args = settings.arguments as String;
         return MaterialPageRoute(
           builder: (_) => BlocProvider(
             create: (context) => getIt.get<ExamCubit>(),
 
-            child: const ExamScreen(),
+            child: ExamScreen(examId: args),
           ),
         );
       // case AppRoutes.forgetPasswordRoute:
       //   return MaterialPageRoute(builder: (_) => const ForgetPasswordScreen());
       case AppRoutes.mainLayoutRoute:
-        return MaterialPageRoute(builder: (context) => const MainLayout());
+        return MaterialPageRoute(
+          builder: (context) => const MainLayout(initiaIndex: 0),
+        );
       case AppRoutes.examScoreRoute:
         final examCubit = settings.arguments as ExamCubit;
         return MaterialPageRoute(
@@ -66,7 +70,11 @@ class RouteGenerator {
         return MaterialPageRoute(
           builder: (context) => SpecificExamScreen(examData: args),
         );
-
+      case AppRoutes.examAnswerRoute:
+        final args = settings.arguments as List<SolvedQuestionEntity>;
+        return MaterialPageRoute(
+          builder: (context) => ResultAnswersScreen(solvedExamEntity: args),
+        );
       default:
         return unDefinedRoute();
     }

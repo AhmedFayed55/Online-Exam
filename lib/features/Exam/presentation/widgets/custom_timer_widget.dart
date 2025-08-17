@@ -38,7 +38,7 @@ class _CustomTimerWidgetState extends State<CustomTimerWidget> {
         .listOfQuestionEntity[0]
         .exam!
         .duration!;
-    endTime = DateTime.now().add(const Duration(seconds: 10));
+    endTime = DateTime.now().add(Duration(minutes: examDuration));
 
     isHalfTime = false;
     super.initState();

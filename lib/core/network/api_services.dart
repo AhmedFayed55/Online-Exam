@@ -30,7 +30,7 @@ abstract class ApiServices {
   @GET(ApiConstants.getQuestionsEndpoint)
   Future<QuestionsDto> getAllQuestionsOnExam(
     @Header(ApiConstants.token) String token,
-    @Path(ApiConstants.examId) String examId,
+    @Query(ApiConstants.examId) String examId,
   );
   @POST(ApiConstants.checkAnswerEndpoint)
   Future<CheckQuestisonsDto> checkExamAnswers(

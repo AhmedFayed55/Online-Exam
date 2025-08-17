@@ -12,4 +12,9 @@ abstract interface class ExamRepo {
     required UserAnswerInputModel inputModel,
     required String token,
   });
+  Future<void> storeExamHistoryLocally({
+    required List<QuestionEntity> listOfQuestisonEntity,
+    required ScoreEntity scoreEntity,
+    required int userExamDuration,
+  });
 }
